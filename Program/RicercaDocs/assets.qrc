@@ -2,15 +2,17 @@
     <qresource prefix="/">
         <file>assets/icons/copy.png</file>
         <file>assets/icons/cut.png</file>
-        <file>assets/icons/new.png</file>
-        <file>assets/icons/open.png</file>
-        <file>assets/icons/save.png</file>
-        <file>assets/screen/logo.png</file>
-        <file>assets/screen/splash.png</file>
         <file>assets/icons/encryption.png</file>
         <file>assets/icons/font.png</file>
+        <file>assets/icons/new.png</file>
+        <file>assets/icons/open.png</file>
         <file>assets/icons/pdf.png</file>
         <file>assets/icons/redo.png</file>
+        <file>assets/icons/save.png</file>
         <file>assets/icons/undo.png</file>
+        <file>assets/screen/logo.png</file>
+        <file>assets/screen/splash.png</file>
+        <file>assets/icons/paste.png</file>
+        <file>assets/icons/exit.png</file>
     </qresource>
 </RCC>

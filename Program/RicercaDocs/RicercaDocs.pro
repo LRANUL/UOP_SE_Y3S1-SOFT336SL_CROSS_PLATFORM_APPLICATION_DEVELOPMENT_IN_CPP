@@ -29,3 +29,17 @@ RESOURCES += \
     assets.qrc
 
 ANDROID_ABIS = armeabi-v7a
+
+DISTFILES += \
+    assets/icons/copy.png \
+    assets/icons/cut.png \
+    assets/icons/encryption.png \
+    assets/icons/font.png \
+    assets/icons/new.png \
+    assets/icons/open.png \
+    assets/icons/pdf.png \
+    assets/icons/redo.png \
+    assets/icons/save.png \
+    assets/icons/undo.png \
+    assets/screen/logo.png \
+    assets/screen/splash.png

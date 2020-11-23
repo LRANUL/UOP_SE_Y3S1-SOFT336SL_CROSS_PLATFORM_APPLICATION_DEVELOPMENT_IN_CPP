@@ -31,6 +31,18 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionAbout;
+    QAction *actionCredits;
+    QAction *actionChangeFont;
+    QAction *actionExit;
+    QAction *actionCut;
+    QAction *actionCopy;
+    QAction *actionPaste;
+    QAction *actionOpen;
+    QAction *actionUndo;
+    QAction *actionRedo;
+    QAction *actionExport;
+    QAction *actionEncrypt;
     QAction *actionNew;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
@@ -40,12 +52,13 @@ public:
     QTabWidget *tabWidget;
     QWidget *design;
     QGridLayout *gridLayout_3;
+    QPushButton *openFile;
+    QPushButton *copy;
+    QPushButton *paste;
     QSpacerItem *horizontalSpacer;
     QPushButton *newFile;
-    QPushButton *copy;
     QPushButton *cut;
     QPushButton *font;
-    QPushButton *openFile;
     QWidget *manage;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *exportPDF;
@@ -70,10 +83,65 @@ public:
         MainWindow->setAutoFillBackground(true);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         MainWindow->setTabShape(QTabWidget::Rounded);
+        actionAbout = new QAction(MainWindow);
+        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionCredits = new QAction(MainWindow);
+        actionCredits->setObjectName(QString::fromUtf8("actionCredits"));
+        actionChangeFont = new QAction(MainWindow);
+        actionChangeFont->setObjectName(QString::fromUtf8("actionChangeFont"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/assets/icons/font.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionChangeFont->setIcon(icon1);
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/assets/icons/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionExit->setIcon(icon2);
+        actionCut = new QAction(MainWindow);
+        actionCut->setObjectName(QString::fromUtf8("actionCut"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/assets/icons/cut.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionCut->setIcon(icon3);
+        actionCopy = new QAction(MainWindow);
+        actionCopy->setObjectName(QString::fromUtf8("actionCopy"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/assets/icons/copy.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionCopy->setIcon(icon4);
+        actionPaste = new QAction(MainWindow);
+        actionPaste->setObjectName(QString::fromUtf8("actionPaste"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/assets/icons/paste.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPaste->setIcon(icon5);
+        actionOpen = new QAction(MainWindow);
+        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/assets/icons/open.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOpen->setIcon(icon6);
+        actionUndo = new QAction(MainWindow);
+        actionUndo->setObjectName(QString::fromUtf8("actionUndo"));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/assets/icons/undo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionUndo->setIcon(icon7);
+        actionRedo = new QAction(MainWindow);
+        actionRedo->setObjectName(QString::fromUtf8("actionRedo"));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/assets/icons/redo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionRedo->setIcon(icon8);
+        actionExport = new QAction(MainWindow);
+        actionExport->setObjectName(QString::fromUtf8("actionExport"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/assets/icons/pdf.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionExport->setIcon(icon9);
+        actionEncrypt = new QAction(MainWindow);
+        actionEncrypt->setObjectName(QString::fromUtf8("actionEncrypt"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/assets/icons/encryption.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionEncrypt->setIcon(icon10);
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
-        QIcon icon1(QIcon::fromTheme(QString::fromUtf8(":assets/icons/new.png")));
-        actionNew->setIcon(icon1);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/assets/icons/new.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionNew->setIcon(icon11);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("background-color: rgb(230, 230, 230);"));
@@ -103,8 +171,8 @@ public:
         textEdit = new QTextEdit(frame);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
-        font1.setPointSize(11);
+        font1.setFamily(QString::fromUtf8("Times New Roman"));
+        font1.setPointSize(12);
         textEdit->setFont(font1);
         textEdit->setStyleSheet(QString::fromUtf8("\n"
 "background-color: rgb(255, 255, 255);"));
@@ -124,26 +192,23 @@ public:
         design->setObjectName(QString::fromUtf8("design"));
         gridLayout_3 = new QGridLayout(design);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 0, 7, 1, 1);
-
-        newFile = new QPushButton(design);
-        newFile->setObjectName(QString::fromUtf8("newFile"));
-        newFile->setMinimumSize(QSize(0, 60));
+        openFile = new QPushButton(design);
+        openFile->setObjectName(QString::fromUtf8("openFile"));
+        openFile->setMinimumSize(QSize(0, 60));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial Nova Light"));
         font2.setPointSize(14);
-        newFile->setFont(font2);
-        newFile->setFocusPolicy(Qt::StrongFocus);
-        newFile->setLayoutDirection(Qt::LeftToRight);
-        newFile->setAutoFillBackground(false);
-        newFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        newFile->setIcon(icon1);
-        newFile->setIconSize(QSize(60, 60));
-        newFile->setFlat(true);
+        openFile->setFont(font2);
+        openFile->setFocusPolicy(Qt::StrongFocus);
+        openFile->setLayoutDirection(Qt::LeftToRight);
+        openFile->setAutoFillBackground(false);
+        openFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        QIcon icon12(QIcon::fromTheme(QString::fromUtf8(":assets/icons/open.png")));
+        openFile->setIcon(icon12);
+        openFile->setIconSize(QSize(60, 60));
+        openFile->setFlat(true);
 
-        gridLayout_3->addWidget(newFile, 0, 0, 1, 1);
+        gridLayout_3->addWidget(openFile, 0, 1, 2, 1);
 
         copy = new QPushButton(design);
         copy->setObjectName(QString::fromUtf8("copy"));
@@ -153,12 +218,47 @@ public:
         copy->setLayoutDirection(Qt::LeftToRight);
         copy->setAutoFillBackground(false);
         copy->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon2(QIcon::fromTheme(QString::fromUtf8(":assets/icons/copy.png")));
-        copy->setIcon(icon2);
+        QIcon icon13(QIcon::fromTheme(QString::fromUtf8(":assets/icons/copy.png")));
+        copy->setIcon(icon13);
         copy->setIconSize(QSize(60, 60));
         copy->setFlat(true);
 
-        gridLayout_3->addWidget(copy, 0, 4, 2, 1);
+        gridLayout_3->addWidget(copy, 0, 4, 2, 2);
+
+        paste = new QPushButton(design);
+        paste->setObjectName(QString::fromUtf8("paste"));
+        paste->setMinimumSize(QSize(0, 60));
+        paste->setFont(font2);
+        paste->setFocusPolicy(Qt::StrongFocus);
+        paste->setLayoutDirection(Qt::LeftToRight);
+        paste->setAutoFillBackground(false);
+        paste->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        QIcon icon14(QIcon::fromTheme(QString::fromUtf8(":assets/icons/paste.png")));
+        paste->setIcon(icon14);
+        paste->setIconSize(QSize(60, 60));
+        paste->setFlat(true);
+
+        gridLayout_3->addWidget(paste, 0, 6, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer, 0, 7, 1, 1);
+
+        newFile = new QPushButton(design);
+        newFile->setObjectName(QString::fromUtf8("newFile"));
+        newFile->setMinimumSize(QSize(0, 60));
+        newFile->setFont(font2);
+        newFile->setFocusPolicy(Qt::StrongFocus);
+        newFile->setLayoutDirection(Qt::LeftToRight);
+        newFile->setAutoFillBackground(false);
+        newFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
+"text-align:bottom;"));
+        QIcon icon15(QIcon::fromTheme(QString::fromUtf8(":assets/icons/new.png")));
+        newFile->setIcon(icon15);
+        newFile->setIconSize(QSize(60, 60));
+        newFile->setFlat(true);
+
+        gridLayout_3->addWidget(newFile, 0, 0, 2, 1);
 
         cut = new QPushButton(design);
         cut->setObjectName(QString::fromUtf8("cut"));
@@ -168,8 +268,8 @@ public:
         cut->setLayoutDirection(Qt::LeftToRight);
         cut->setAutoFillBackground(false);
         cut->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon3(QIcon::fromTheme(QString::fromUtf8(":assets/icons/cut.png")));
-        cut->setIcon(icon3);
+        QIcon icon16(QIcon::fromTheme(QString::fromUtf8(":assets/icons/cut.png")));
+        cut->setIcon(icon16);
         cut->setIconSize(QSize(60, 60));
         cut->setFlat(true);
 
@@ -183,27 +283,12 @@ public:
         font->setLayoutDirection(Qt::LeftToRight);
         font->setAutoFillBackground(false);
         font->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon4(QIcon::fromTheme(QString::fromUtf8(":assets/icons/font.png")));
-        font->setIcon(icon4);
+        QIcon icon17(QIcon::fromTheme(QString::fromUtf8(":assets/icons/font.png")));
+        font->setIcon(icon17);
         font->setIconSize(QSize(60, 60));
         font->setFlat(true);
 
         gridLayout_3->addWidget(font, 0, 2, 2, 1);
-
-        openFile = new QPushButton(design);
-        openFile->setObjectName(QString::fromUtf8("openFile"));
-        openFile->setMinimumSize(QSize(0, 60));
-        openFile->setFont(font2);
-        openFile->setFocusPolicy(Qt::StrongFocus);
-        openFile->setLayoutDirection(Qt::LeftToRight);
-        openFile->setAutoFillBackground(false);
-        openFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon5(QIcon::fromTheme(QString::fromUtf8(":assets/icons/open.png")));
-        openFile->setIcon(icon5);
-        openFile->setIconSize(QSize(60, 60));
-        openFile->setFlat(true);
-
-        gridLayout_3->addWidget(openFile, 0, 1, 1, 1);
 
         tabWidget->addTab(design, QString());
         manage = new QWidget();
@@ -221,8 +306,8 @@ public:
         exportPDF->setLayoutDirection(Qt::LeftToRight);
         exportPDF->setAutoFillBackground(false);
         exportPDF->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon6(QIcon::fromTheme(QString::fromUtf8(":assets/icons/pdf.png")));
-        exportPDF->setIcon(icon6);
+        QIcon icon18(QIcon::fromTheme(QString::fromUtf8(":assets/icons/pdf.png")));
+        exportPDF->setIcon(icon18);
         exportPDF->setIconSize(QSize(60, 60));
         exportPDF->setFlat(true);
 
@@ -236,8 +321,8 @@ public:
         encrypt->setLayoutDirection(Qt::LeftToRight);
         encrypt->setAutoFillBackground(false);
         encrypt->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon7(QIcon::fromTheme(QString::fromUtf8(":assets/icons/encryption.png")));
-        encrypt->setIcon(icon7);
+        QIcon icon19(QIcon::fromTheme(QString::fromUtf8(":assets/icons/encryption.png")));
+        encrypt->setIcon(icon19);
         encrypt->setIconSize(QSize(60, 60));
         encrypt->setFlat(true);
 
@@ -275,11 +360,24 @@ public:
         menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuView->menuAction());
         menubar->addAction(menuHelp->menuAction());
+        menuView->addAction(actionExport);
+        menuView->addAction(actionEncrypt);
+        menuHelp->addSeparator();
+        menuHelp->addAction(actionAbout);
+        menuHelp->addAction(actionCredits);
+        menuEdit->addAction(actionUndo);
+        menuEdit->addAction(actionRedo);
+        menuEdit->addAction(actionCut);
+        menuEdit->addAction(actionCopy);
+        menuEdit->addAction(actionPaste);
+        menuEdit->addAction(actionChangeFont);
         menuFile->addAction(actionNew);
+        menuFile->addAction(actionOpen);
+        menuFile->addAction(actionExit);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -288,17 +386,100 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Ricerca Docs", nullptr));
+        actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
+        actionCredits->setText(QCoreApplication::translate("MainWindow", "Credits", nullptr));
+        actionChangeFont->setText(QCoreApplication::translate("MainWindow", "Change Font", nullptr));
+#if QT_CONFIG(tooltip)
+        actionChangeFont->setToolTip(QCoreApplication::translate("MainWindow", "Change document font", nullptr));
+#endif // QT_CONFIG(tooltip)
+        actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
+#if QT_CONFIG(tooltip)
+        actionExit->setToolTip(QCoreApplication::translate("MainWindow", "Exit the application", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionExit->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+W", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionCut->setText(QCoreApplication::translate("MainWindow", "Cut", nullptr));
+#if QT_CONFIG(tooltip)
+        actionCut->setToolTip(QCoreApplication::translate("MainWindow", "Cut text", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionCut->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+X", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionCopy->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
+#if QT_CONFIG(tooltip)
+        actionCopy->setToolTip(QCoreApplication::translate("MainWindow", "Copy text", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionCopy->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+C", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionPaste->setText(QCoreApplication::translate("MainWindow", "Paste", nullptr));
+#if QT_CONFIG(tooltip)
+        actionPaste->setToolTip(QCoreApplication::translate("MainWindow", "Paste text", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionPaste->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+V", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
+#if QT_CONFIG(tooltip)
+        actionOpen->setToolTip(QCoreApplication::translate("MainWindow", "Open Document", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionOpen->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+O", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionUndo->setText(QCoreApplication::translate("MainWindow", "Undo", nullptr));
+#if QT_CONFIG(tooltip)
+        actionUndo->setToolTip(QCoreApplication::translate("MainWindow", "Undo", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionUndo->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Z", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionRedo->setText(QCoreApplication::translate("MainWindow", "Redo", nullptr));
+#if QT_CONFIG(tooltip)
+        actionRedo->setToolTip(QCoreApplication::translate("MainWindow", "Redo", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionRedo->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+Y", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionExport->setText(QCoreApplication::translate("MainWindow", "Export File", nullptr));
+#if QT_CONFIG(tooltip)
+        actionExport->setToolTip(QCoreApplication::translate("MainWindow", "Export to PDF", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionExport->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+P", nullptr));
+#endif // QT_CONFIG(shortcut)
+        actionEncrypt->setText(QCoreApplication::translate("MainWindow", "Encrypt File", nullptr));
+#if QT_CONFIG(tooltip)
+        actionEncrypt->setToolTip(QCoreApplication::translate("MainWindow", "Encrypt document", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionEncrypt->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+E", nullptr));
+#endif // QT_CONFIG(shortcut)
         actionNew->setText(QCoreApplication::translate("MainWindow", "New", nullptr));
+#if QT_CONFIG(tooltip)
+        actionNew->setToolTip(QCoreApplication::translate("MainWindow", "Create new document", nullptr));
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        actionNew->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+N", nullptr));
+#endif // QT_CONFIG(shortcut)
+        textEdit->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Times New Roman'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline; color:#00677c;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline; color:#b0b0b0;\">Reference List</span></p></body></html>", nullptr));
+        openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
+        copy->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
+        paste->setText(QCoreApplication::translate("MainWindow", "Paste", nullptr));
         newFile->setText(QCoreApplication::translate("MainWindow", "New File", nullptr));
-        copy->setText(QCoreApplication::translate("MainWindow", "Copy/Paste", nullptr));
         cut->setText(QCoreApplication::translate("MainWindow", "Cut", nullptr));
         font->setText(QCoreApplication::translate("MainWindow", "Font", nullptr));
-        openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(design), QCoreApplication::translate("MainWindow", "Design", nullptr));
         exportPDF->setText(QCoreApplication::translate("MainWindow", "Export to PDF", nullptr));
         encrypt->setText(QCoreApplication::translate("MainWindow", "Encrypt Document", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(manage), QCoreApplication::translate("MainWindow", "Manage", nullptr));
-        menuView->setTitle(QCoreApplication::translate("MainWindow", "View", nullptr));
+        menuView->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));

@@ -58,7 +58,18 @@ OBJECTS       = release\main.obj \
 		release\qrc_assets.obj \
 		release\moc_mainwindow.obj
 
-DIST          =  ..\RicercaDocs\mainwindow.h ..\RicercaDocs\main.cpp \
+DIST          = assets/icons/copy.png \
+		assets/icons/cut.png \
+		assets/icons/encryption.png \
+		assets/icons/font.png \
+		assets/icons/new.png \
+		assets/icons/open.png \
+		assets/icons/pdf.png \
+		assets/icons/redo.png \
+		assets/icons/save.png \
+		assets/icons/undo.png \
+		assets/screen/logo.png \
+		assets/screen/splash.png ..\RicercaDocs\mainwindow.h ..\RicercaDocs\main.cpp \
 		..\RicercaDocs\mainwindow.cpp
 QMAKE_TARGET  = RicercaDocs
 DESTDIR        = release\ #avoid trailing-slash linebreak
@@ -180,8 +191,10 @@ release\qrc_assets.cpp: ..\RicercaDocs\assets.qrc \
 		..\RicercaDocs\assets\icons\font.png \
 		..\RicercaDocs\assets\icons\redo.png \
 		..\RicercaDocs\assets\icons\copy.png \
-		..\RicercaDocs\assets\icons\new.png \
+		..\RicercaDocs\assets\icons\exit.png \
 		..\RicercaDocs\assets\icons\encryption.png \
+		..\RicercaDocs\assets\icons\new.png \
+		..\RicercaDocs\assets\icons\paste.png \
 		..\RicercaDocs\assets\icons\pdf.png
 	C:\Qt\5.15.1\msvc2019_64\bin\rcc.exe -name assets ..\RicercaDocs\assets.qrc -o release\qrc_assets.cpp
 
@@ -595,7 +608,13 @@ release\mainwindow.obj: ..\RicercaDocs\mainwindow.cpp ..\RicercaDocs\mainwindow.
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMessageBox \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdialog.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\QCloseEvent \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QFontDialog \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qfontdialog.h
 
 release\qrc_assets.obj: release\qrc_assets.cpp 
 
