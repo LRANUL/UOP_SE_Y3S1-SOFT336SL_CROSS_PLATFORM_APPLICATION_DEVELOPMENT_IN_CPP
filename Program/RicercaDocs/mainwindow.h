@@ -42,7 +42,9 @@ private slots:
 
     void on_fontColor_clicked();
 
-    void on_cut_clicked();
+    void on_encrypt_clicked();
+
+    void on_actionEncrypt_triggered();
 
 private:
     Ui::MainWindow *ui;

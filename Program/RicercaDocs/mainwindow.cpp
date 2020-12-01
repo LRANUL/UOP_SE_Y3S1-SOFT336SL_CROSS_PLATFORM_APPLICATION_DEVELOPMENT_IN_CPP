@@ -8,6 +8,9 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QColorDialog>
+#include <simplecrypt.h>
+#include <QBuffer>
+#include <QCryptographicHash>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -54,8 +57,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionCredits_triggered()
 {
-    QMessageBox::StandardButton Reponse;   //    Creates a varaible to hold Message Box reponse from user
-        Reponse = QMessageBox::information(this, tr("Credits"),
+
+         QMessageBox::information(this, tr("Credits"),
                                    tr("Ricerca Docs (Research Documents)\n\nDeveloped by: Ranul Ladduwahetty(10673986)for SOFT336SL Module\n\n"
                                       "Credits and Thanks\n\nLecturer: Mr. Marius Varga for his kind support and guidance\n\n"
                                       "Icon Artists:\nDimitry Miroliubov, Freepik, monkik, Pixel perfect, Smashicons"
@@ -64,8 +67,8 @@ void MainWindow::on_actionCredits_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::StandardButton Reponse;   //    Creates a varaible to hold Message Box reponse from user
-        Reponse = QMessageBox::information(this, tr("About the Ricerca Docs"),
+
+        QMessageBox::information(this, tr("About the Ricerca Docs"),
                                    tr("Ricerca Docs (Research Documents)\n\nDeveloped by: Ranul Ladduwahetty(10673986)for SOFT336SL Module\n\n"
                                       "Features\n-Allows Rich Text Documenting\n-Allows Document Encryption\n-Allows Document Exporting\n\n"
                                       "Purpose: This application was developed to protect Intellectual Property Act, or PIPA of researchers. "
@@ -139,26 +142,49 @@ void MainWindow::on_actionOpen_triggered()
     if(!file.open(QIODevice::ReadOnly))
         QMessageBox::information(this,tr("Info"),file.errorString());
     QTextStream in(&file);
-    ui->textEdit->setText(in.readAll());
-    setWindowModified(false);
-    setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+    QString text = in.readAll();
+    QMessageBox::StandardButton Reponse;   //    Creates a varaible to hold Message Box reponse from user
+        Reponse = QMessageBox::warning(this, tr("Document Security Check"),
+                                   tr("Select 'Yes' Option if file is encrypted\n"
+                                      "Select 'No' Option if file is not encrypted\n\n"
+                                      "In a event the the opened file is courrpted or blank try opening as a non encrypted file."),
+                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+    if(Reponse == QMessageBox::No)     //      Checks reponse and hold window from closing
+    {
+        ui->textEdit->setText(text);
+        setWindowModified(false);
+        setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+    }
+    else if(Reponse == QMessageBox::Yes)       //      Checks reponse and closes window
+    {
+        SimpleCrypt crypto(Q_UINT64_C(52696365726361));
+         QString decrypted = crypto.decryptToString(text);
+        ui->textEdit->setText(decrypted);
+        setWindowModified(false);
+        setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+    }
 }
 
 
 void MainWindow::on_actionSave_triggered()
 {
-    QString filename = QFileDialog::getSaveFileName(
+    QString fileName = QFileDialog::getSaveFileName(
                 this,
                 tr("Save File"),
                 QDir::currentPath(),
-                "All files (*.*)"
+                "Text files (*.txt)"
                 );
-    QFile file(filename);
+    QFile file(fileName);
     if(!file.open(QIODevice::WriteOnly))
         QMessageBox::information(this,tr("Info"),file.errorString());
     QTextStream out(&file);
     QString text = ui->textEdit->toHtml();
     out << text;
+    setWindowModified(false);
+    setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
 }
 
 void MainWindow::on_newFile_clicked()
@@ -173,15 +199,35 @@ void MainWindow::on_openFile_clicked()
                 this,
                 tr("Open File"),
                 QDir::currentPath(),
-                "All files (*.*)"
+                "Text files (*.txt)"
                 );
     QFile file(fileName);
     if(!file.open(QIODevice::ReadOnly))
         QMessageBox::information(this,tr("Info"),file.errorString());
     QTextStream in(&file);
-    ui->textEdit->setText(in.readAll());
-    setWindowModified(false);
-    setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+    QString text = in.readAll();
+    QMessageBox::StandardButton Reponse;   //    Creates a varaible to hold Message Box reponse from user
+        Reponse = QMessageBox::warning(this, tr("Document Security Check"),
+                                   tr("Select 'Yes' Option if file is encrypted\n"
+                                      "Select 'No' Option if file is not encrypted\n\n"
+                                      "In a event the the opened file is courrpted or blank try opening as a non encrypted file."),
+                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+    if(Reponse == QMessageBox::No)     //      Checks reponse and hold window from closing
+    {
+        ui->textEdit->setText(text);
+        setWindowModified(false);
+        setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+    }
+    else if(Reponse == QMessageBox::Yes)       //      Checks reponse and closes window
+    {
+        SimpleCrypt crypto(Q_UINT64_C(52696365726361));
+        QString decrypted = crypto.decryptToString(text);
+        ui->textEdit->setText(decrypted);
+        setWindowModified(false);
+        setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+    }
 }
 
 void MainWindow::on_font_clicked()
@@ -203,7 +249,56 @@ void MainWindow::on_fontColor_clicked()
     ui->textEdit->QTextEdit::setTextColor(selection);
 }
 
-void MainWindow::on_cut_clicked()
+void MainWindow::on_encrypt_clicked()
 {
+    SimpleCrypt crypto(52696365726361); // Ricerca Hex value used
+     crypto.setCompressionMode(SimpleCrypt::CompressionAlways); // data compress
+     crypto.setIntegrityProtectionMode(SimpleCrypt::ProtectionHash); // hash protect for data integrity
 
+
+     QString text = ui->textEdit->toHtml();
+     QString CypherText = crypto.encryptToString(text);
+      if (crypto.lastError() == SimpleCrypt::ErrorNoError) {
+          QString fileName = QFileDialog::getSaveFileName(
+                      this,
+                      tr("Save File"),
+                      QDir::currentPath(),
+                      "Text Document (*.txt)"
+                      );
+          QFile file(fileName);
+          if(!file.open(QIODevice::WriteOnly))
+              QMessageBox::information(this,tr("Info"),file.errorString());
+          QTextStream out(&file);
+          out << CypherText;
+          setWindowModified(false);
+          setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+      }
+}
+
+void MainWindow::on_actionEncrypt_triggered()
+{
+    SimpleCrypt crypto(52696365726361); // Ricerca Hex value used
+     crypto.setCompressionMode(SimpleCrypt::CompressionAlways); // data compress
+     crypto.setIntegrityProtectionMode(SimpleCrypt::ProtectionHash); // hash protect for data integrity
+
+
+     QString text = ui->textEdit->toHtml();
+     QString CypherText = crypto.encryptToString(text);
+      if (crypto.lastError() == SimpleCrypt::ErrorNoError) {
+          QString fileName = QFileDialog::getSaveFileName(
+                      this,
+                      tr("Save File"),
+                      QDir::currentPath(),
+                      "Text Document (*.txt)"
+                      );
+          QFile file(fileName);
+          if(!file.open(QIODevice::WriteOnly))
+              QMessageBox::information(this,tr("Info"),file.errorString());
+          QTextStream out(&file);
+          out << CypherText;
+           setWindowModified(false);
+           setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+
+      }
 }

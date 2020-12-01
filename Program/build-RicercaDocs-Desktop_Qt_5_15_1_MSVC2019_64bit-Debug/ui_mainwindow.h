@@ -57,9 +57,6 @@ public:
     QPushButton *openFile;
     QPushButton *font;
     QPushButton *fontColor;
-    QPushButton *cut;
-    QPushButton *copy;
-    QPushButton *paste;
     QWidget *manage;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *exportPDF;
@@ -262,51 +259,6 @@ public:
 
         horizontalLayout->addWidget(fontColor);
 
-        cut = new QPushButton(design);
-        cut->setObjectName(QString::fromUtf8("cut"));
-        cut->setMinimumSize(QSize(0, 60));
-        cut->setFont(font2);
-        cut->setFocusPolicy(Qt::StrongFocus);
-        cut->setLayoutDirection(Qt::LeftToRight);
-        cut->setAutoFillBackground(false);
-        cut->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon17(QIcon::fromTheme(QString::fromUtf8(":assets/icons/cut.png")));
-        cut->setIcon(icon17);
-        cut->setIconSize(QSize(60, 60));
-        cut->setFlat(true);
-
-        horizontalLayout->addWidget(cut);
-
-        copy = new QPushButton(design);
-        copy->setObjectName(QString::fromUtf8("copy"));
-        copy->setMinimumSize(QSize(0, 60));
-        copy->setFont(font2);
-        copy->setFocusPolicy(Qt::StrongFocus);
-        copy->setLayoutDirection(Qt::LeftToRight);
-        copy->setAutoFillBackground(false);
-        copy->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon18(QIcon::fromTheme(QString::fromUtf8(":assets/icons/copy.png")));
-        copy->setIcon(icon18);
-        copy->setIconSize(QSize(60, 60));
-        copy->setFlat(true);
-
-        horizontalLayout->addWidget(copy);
-
-        paste = new QPushButton(design);
-        paste->setObjectName(QString::fromUtf8("paste"));
-        paste->setMinimumSize(QSize(0, 60));
-        paste->setFont(font2);
-        paste->setFocusPolicy(Qt::StrongFocus);
-        paste->setLayoutDirection(Qt::LeftToRight);
-        paste->setAutoFillBackground(false);
-        paste->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon19(QIcon::fromTheme(QString::fromUtf8(":assets/icons/paste.png")));
-        paste->setIcon(icon19);
-        paste->setIconSize(QSize(60, 60));
-        paste->setFlat(true);
-
-        horizontalLayout->addWidget(paste);
-
         tabWidget->addTab(design, QString());
         manage = new QWidget();
         manage->setObjectName(QString::fromUtf8("manage"));
@@ -320,8 +272,8 @@ public:
         exportPDF->setLayoutDirection(Qt::LeftToRight);
         exportPDF->setAutoFillBackground(false);
         exportPDF->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon20(QIcon::fromTheme(QString::fromUtf8(":assets/icons/pdf.png")));
-        exportPDF->setIcon(icon20);
+        QIcon icon17(QIcon::fromTheme(QString::fromUtf8(":assets/icons/pdf.png")));
+        exportPDF->setIcon(icon17);
         exportPDF->setIconSize(QSize(60, 60));
         exportPDF->setFlat(true);
 
@@ -335,8 +287,8 @@ public:
         encrypt->setLayoutDirection(Qt::LeftToRight);
         encrypt->setAutoFillBackground(false);
         encrypt->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon21(QIcon::fromTheme(QString::fromUtf8(":assets/icons/encryption.png")));
-        encrypt->setIcon(icon21);
+        QIcon icon18(QIcon::fromTheme(QString::fromUtf8(":assets/icons/encryption.png")));
+        encrypt->setIcon(icon18);
         encrypt->setIconSize(QSize(60, 60));
         encrypt->setFlat(true);
 
@@ -493,9 +445,6 @@ public:
         openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
         font->setText(QCoreApplication::translate("MainWindow", "Font Type", nullptr));
         fontColor->setText(QCoreApplication::translate("MainWindow", "Font Color", nullptr));
-        cut->setText(QCoreApplication::translate("MainWindow", "Cut", nullptr));
-        copy->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
-        paste->setText(QCoreApplication::translate("MainWindow", "Paste", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(design), QCoreApplication::translate("MainWindow", "Design", nullptr));
         exportPDF->setText(QCoreApplication::translate("MainWindow", "Export to PDF", nullptr));
         encrypt->setText(QCoreApplication::translate("MainWindow", "Encrypt Document", nullptr));
