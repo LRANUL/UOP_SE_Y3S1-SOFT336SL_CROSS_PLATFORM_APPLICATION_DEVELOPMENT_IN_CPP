@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTextEdit>
+#include <QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +17,38 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionCredits_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_actionNew_triggered();
+
+    void on_actionExit_triggered();
+
+    void on_actionChangeFont_triggered();
+
+    void documentModified();
+
+    void on_actionOpen_triggered();
+
+    void on_actionSave_triggered();
+
+    void on_newFile_clicked();
+
+    void on_openFile_clicked();
+
+    void on_font_clicked();
+
+    void on_fontColor_clicked();
+
+    void on_cut_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+protected:
+ void closeEvent(QCloseEvent *e);
+
 };
 #endif // MAINWINDOW_H

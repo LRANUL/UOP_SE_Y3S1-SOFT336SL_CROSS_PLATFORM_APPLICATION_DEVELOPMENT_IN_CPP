@@ -112,8 +112,8 @@
         <widget class="QTextEdit" name="textEdit">
          <property name="font">
           <font>
-           <family>Arial</family>
-           <pointsize>11</pointsize>
+           <family>Times New Roman</family>
+           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="styleSheet">
@@ -129,9 +129,16 @@ background-color: rgb(255, 255, 255);</string>
          <property name="lineWidth">
           <number>1</number>
          </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Times New Roman'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="0" column="0">
         <widget class="QTabWidget" name="tabWidget">
          <property name="minimumSize">
           <size>
@@ -152,27 +159,14 @@ background-color: rgb(255, 255, 255);</string>
           <string notr="true">background-color: rgb(250, 250, 250);</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="design">
           <attribute name="title">
            <string>Design</string>
           </attribute>
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="7">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
             <widget class="QPushButton" name="newFile">
              <property name="minimumSize">
               <size>
@@ -183,7 +177,7 @@ background-color: rgb(255, 255, 255);</string>
              <property name="font">
               <font>
                <family>Arial Nova Light</family>
-               <pointsize>14</pointsize>
+               <pointsize>10</pointsize>
               </font>
              </property>
              <property name="focusPolicy">
@@ -196,7 +190,8 @@ background-color: rgb(255, 255, 255);</string>
               <bool>false</bool>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
+              <string notr="true">background-color: rgb(240, 240, 240);
+text-align:bottom;</string>
              </property>
              <property name="text">
               <string>New File</string>
@@ -215,8 +210,8 @@ background-color: rgb(255, 255, 255);</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="4" rowspan="2">
-            <widget class="QPushButton" name="copy">
+           <item>
+            <widget class="QPushButton" name="openFile">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -226,7 +221,7 @@ background-color: rgb(255, 255, 255);</string>
              <property name="font">
               <font>
                <family>Arial Nova Light</family>
-               <pointsize>14</pointsize>
+               <pointsize>10</pointsize>
               </font>
              </property>
              <property name="focusPolicy">
@@ -242,10 +237,10 @@ background-color: rgb(255, 255, 255);</string>
               <string notr="true">background-color: rgb(240, 240, 240);</string>
              </property>
              <property name="text">
-              <string>Copy/Paste</string>
+              <string>Open File</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/copy.png"/>
+              <iconset theme=":assets/icons/open.png"/>
              </property>
              <property name="iconSize">
               <size>
@@ -258,7 +253,93 @@ background-color: rgb(255, 255, 255);</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="3" rowspan="2">
+           <item>
+            <widget class="QPushButton" name="font">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Font Type</string>
+             </property>
+             <property name="icon">
+              <iconset theme=":assets/icons/font.png"/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="fontColor">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Font Color</string>
+             </property>
+             <property name="icon">
+              <iconset theme=":assets/icons/fontColor.png"/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="cut">
              <property name="minimumSize">
               <size>
@@ -269,7 +350,7 @@ background-color: rgb(255, 255, 255);</string>
              <property name="font">
               <font>
                <family>Arial Nova Light</family>
-               <pointsize>14</pointsize>
+               <pointsize>10</pointsize>
               </font>
              </property>
              <property name="focusPolicy">
@@ -301,8 +382,8 @@ background-color: rgb(255, 255, 255);</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="2" rowspan="2">
-            <widget class="QPushButton" name="font">
+           <item>
+            <widget class="QPushButton" name="copy">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -312,7 +393,7 @@ background-color: rgb(255, 255, 255);</string>
              <property name="font">
               <font>
                <family>Arial Nova Light</family>
-               <pointsize>14</pointsize>
+               <pointsize>10</pointsize>
               </font>
              </property>
              <property name="focusPolicy">
@@ -328,10 +409,10 @@ background-color: rgb(255, 255, 255);</string>
               <string notr="true">background-color: rgb(240, 240, 240);</string>
              </property>
              <property name="text">
-              <string>Font</string>
+              <string>Copy</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/font.png"/>
+              <iconset theme=":assets/icons/copy.png"/>
              </property>
              <property name="iconSize">
               <size>
@@ -344,8 +425,8 @@ background-color: rgb(255, 255, 255);</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QPushButton" name="openFile">
+           <item>
+            <widget class="QPushButton" name="paste">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -355,7 +436,7 @@ background-color: rgb(255, 255, 255);</string>
              <property name="font">
               <font>
                <family>Arial Nova Light</family>
-               <pointsize>14</pointsize>
+               <pointsize>10</pointsize>
               </font>
              </property>
              <property name="focusPolicy">
@@ -371,10 +452,10 @@ background-color: rgb(255, 255, 255);</string>
               <string notr="true">background-color: rgb(240, 240, 240);</string>
              </property>
              <property name="text">
-              <string>Open File</string>
+              <string>Paste</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/open.png"/>
+              <iconset theme=":assets/icons/paste.png"/>
              </property>
              <property name="iconSize">
               <size>
@@ -514,39 +595,234 @@ background-color: rgb(255, 255, 255);</string>
    </property>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>Tools</string>
     </property>
+    <addaction name="actionExport"/>
+    <addaction name="actionEncrypt"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionCredits"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="actionChangeFont"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>
   </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionCredits">
+   <property name="text">
+    <string>Credits</string>
+   </property>
+  </action>
+  <action name="actionChangeFont">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/font.png</normaloff>:/assets/icons/font.png</iconset>
+   </property>
+   <property name="text">
+    <string>Change Font</string>
+   </property>
+   <property name="toolTip">
+    <string>Change document font</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/exit.png</normaloff>:/assets/icons/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit the application</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/cut.png</normaloff>:/assets/icons/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="toolTip">
+    <string>Cut text</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/copy.png</normaloff>:/assets/icons/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy text</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/paste.png</normaloff>:/assets/icons/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="toolTip">
+    <string>Paste text</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/open.png</normaloff>:/assets/icons/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Document</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/undo.png</normaloff>:/assets/icons/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="toolTip">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/redo.png</normaloff>:/assets/icons/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="toolTip">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/pdf.png</normaloff>:/assets/icons/pdf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export File</string>
+   </property>
+   <property name="toolTip">
+    <string>Export to PDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionEncrypt">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/encryption.png</normaloff>:/assets/icons/encryption.png</iconset>
+   </property>
+   <property name="text">
+    <string>Encrypt File</string>
+   </property>
+   <property name="toolTip">
+    <string>Encrypt document</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset theme=":assets/icons/new.png"/>
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/new.png</normaloff>:/assets/icons/new.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
    </property>
+   <property name="toolTip">
+    <string>Create new document</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="assets.qrc">
+     <normaloff>:/assets/icons/save.png</normaloff>:/assets/icons/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save document</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="assets.qrc"/>
+ </resources>
  <connections/>
 </ui>
