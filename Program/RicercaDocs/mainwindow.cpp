@@ -4,6 +4,10 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include <QFontDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QColorDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -87,7 +91,8 @@ void MainWindow::on_actionChangeFont_triggered()
     bool ok;
     QFont selection = QFontDialog::getFont( &ok, ui->textEdit->currentFont(), this);
     if (ok) {
-       ui->textEdit->setFont(selection);
+
+       ui->textEdit->QTextEdit::setCurrentFont(selection);
     }
 }
 void MainWindow::documentModified()
@@ -120,4 +125,85 @@ void MainWindow::closeEvent(QCloseEvent *e)
      {
          e->accept();
      }
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(
+                this,
+                tr("Open File"),
+                QDir::currentPath(),
+                "All files (*.*)"
+                );
+    QFile file(fileName);
+    if(!file.open(QIODevice::ReadOnly))
+        QMessageBox::information(this,tr("Info"),file.errorString());
+    QTextStream in(&file);
+    ui->textEdit->setText(in.readAll());
+    setWindowModified(false);
+    setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+}
+
+
+void MainWindow::on_actionSave_triggered()
+{
+    QString filename = QFileDialog::getSaveFileName(
+                this,
+                tr("Save File"),
+                QDir::currentPath(),
+                "All files (*.*)"
+                );
+    QFile file(filename);
+    if(!file.open(QIODevice::WriteOnly))
+        QMessageBox::information(this,tr("Info"),file.errorString());
+    QTextStream out(&file);
+    QString text = ui->textEdit->toHtml();
+    out << text;
+}
+
+void MainWindow::on_newFile_clicked()
+{
+    MainWindow *newEditor = new MainWindow();
+    newEditor->show();
+}
+
+void MainWindow::on_openFile_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(
+                this,
+                tr("Open File"),
+                QDir::currentPath(),
+                "All files (*.*)"
+                );
+    QFile file(fileName);
+    if(!file.open(QIODevice::ReadOnly))
+        QMessageBox::information(this,tr("Info"),file.errorString());
+    QTextStream in(&file);
+    ui->textEdit->setText(in.readAll());
+    setWindowModified(false);
+    setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull()?"untitled":QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
+}
+
+void MainWindow::on_font_clicked()
+{
+    bool ok;
+    QFont selection = QFontDialog::getFont( &ok, ui->textEdit->currentFont(), this);
+    if (ok) {
+
+       ui->textEdit->QTextEdit::setCurrentFont(selection);
+    }
+}
+
+
+void MainWindow::on_fontColor_clicked()
+{
+
+    QColor selection = QColorDialog::getColor(tr("Select Font Color"),this);
+
+    ui->textEdit->QTextEdit::setTextColor(selection);
+}
+
+void MainWindow::on_cut_clicked()
+{
+
 }

@@ -30,11 +30,22 @@ private slots:
 
     void documentModified();
 
+    void on_actionOpen_triggered();
+
+    void on_actionSave_triggered();
+
+    void on_newFile_clicked();
+
+    void on_openFile_clicked();
+
+    void on_font_clicked();
+
+    void on_fontColor_clicked();
+
+    void on_cut_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QTextEdit textEdit;
-    QString m_fileName;
-    void loadFile(const QString &fileName);
 
 protected:
  void closeEvent(QCloseEvent *e);

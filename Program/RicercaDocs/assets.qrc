@@ -14,5 +14,6 @@
         <file>assets/screen/splash.png</file>
         <file>assets/icons/paste.png</file>
         <file>assets/icons/exit.png</file>
+        <file>assets/icons/fontColor.png</file>
     </qresource>
 </RCC>

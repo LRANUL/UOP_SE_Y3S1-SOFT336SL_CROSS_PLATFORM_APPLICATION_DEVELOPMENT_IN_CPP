@@ -189,6 +189,7 @@ release\qrc_assets.cpp: ..\RicercaDocs\assets.qrc \
 		..\RicercaDocs\assets\icons\cut.png \
 		..\RicercaDocs\assets\icons\undo.png \
 		..\RicercaDocs\assets\icons\font.png \
+		..\RicercaDocs\assets\icons\fontColor.png \
 		..\RicercaDocs\assets\icons\redo.png \
 		..\RicercaDocs\assets\icons\copy.png \
 		..\RicercaDocs\assets\icons\exit.png \
@@ -314,6 +315,16 @@ release\moc_mainwindow.cpp: ..\RicercaDocs\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTextEdit \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QFile \
 		release\moc_predefs.h \
 		C:\Qt\5.15.1\msvc2019_64\bin\moc.exe
 	C:\Qt\5.15.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include C:/Users/ranul/Documents/GitHub/UOP_SE_Y3S1-SOFT336SL_CROSS_PLATFORM_APPLICATION_DEVELOPMENT_IN_CPP/Program/build-RicercaDocs-Desktop_Qt_5_15_1_MSVC2019_64bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.1/msvc2019_64/mkspecs/win32-msvc -IC:/Users/ranul/Documents/GitHub/UOP_SE_Y3S1-SOFT336SL_CROSS_PLATFORM_APPLICATION_DEVELOPMENT_IN_CPP/Program/RicercaDocs -IC:/Qt/5.15.1/msvc2019_64/include -IC:/Qt/5.15.1/msvc2019_64/include/QtWidgets -IC:/Qt/5.15.1/msvc2019_64/include/QtGui -IC:/Qt/5.15.1/msvc2019_64/include/QtANGLE -IC:/Qt/5.15.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.27.29110\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\RicercaDocs\mainwindow.h -o release\moc_mainwindow.cpp
@@ -448,6 +459,16 @@ release\main.obj: ..\RicercaDocs\main.cpp ..\RicercaDocs\mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTextEdit \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QFile \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QSplashScreen \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qsplashscreen.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QApplication \
@@ -568,6 +589,16 @@ release\mainwindow.obj: ..\RicercaDocs\mainwindow.cpp ..\RicercaDocs\mainwindow.
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtouchdevice.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtabwidget.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qicon.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTextEdit \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtextedit.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextdocument.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QFile \
 		ui_mainwindow.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QVariant \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\QIcon \
@@ -582,7 +613,6 @@ release\mainwindow.obj: ..\RicercaDocs\mainwindow.cpp ..\RicercaDocs\mainwindow.
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qinputmethod.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QFrame \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qframe.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QGridLayout \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qlayout.h \
@@ -600,21 +630,20 @@ release\mainwindow.obj: ..\RicercaDocs\mainwindow.cpp ..\RicercaDocs\mainwindow.
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QStatusBar \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qstatusbar.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTabWidget \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QTextEdit \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qtextedit.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextdocument.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextoption.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextcursor.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qtextformat.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qpen.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QWidget \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QMessageBox \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qdialog.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtGui\QCloseEvent \
 		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QFontDialog \
-		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qfontdialog.h
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qfontdialog.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QTextStream \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QFileDialog \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qfiledialog.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdir.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qfileinfo.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\QColorDialog \
+		C:\Qt\5.15.1\msvc2019_64\include\QtWidgets\qcolordialog.h
 
 release\qrc_assets.obj: release\qrc_assets.cpp 
 
