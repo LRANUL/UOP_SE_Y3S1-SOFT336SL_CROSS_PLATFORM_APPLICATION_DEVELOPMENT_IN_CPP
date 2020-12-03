@@ -6,7 +6,10 @@
 #include <QFile>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -46,11 +49,14 @@ private slots:
 
     void on_actionEncrypt_triggered();
 
+    void on_actionExport_triggered();
+
+    void on_exportPDF_clicked();
+
 private:
     Ui::MainWindow *ui;
 
 protected:
- void closeEvent(QCloseEvent *e);
-
+    void closeEvent(QCloseEvent *e);
 };
 #endif // MAINWINDOW_H

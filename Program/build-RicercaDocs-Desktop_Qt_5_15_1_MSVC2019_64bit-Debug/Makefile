@@ -292,12 +292,14 @@ Makefile: ..\RicercaDocs\RicercaDocs.pro C:\Qt\5.15.1\msvc2019_64\mkspecs\win32-
 		C:\Qt\5.15.1\msvc2019_64\mkspecs\features\yacc.prf \
 		C:\Qt\5.15.1\msvc2019_64\mkspecs\features\lex.prf \
 		..\RicercaDocs\RicercaDocs.pro \
+		C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\qtmain.prl \
 		C:\Qt\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf \
 		..\RicercaDocs\assets.qrc \
+		C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Guid.prl \
 		C:\Qt\5.15.1\msvc2019_64\lib\Qt5Cored.prl \
@@ -511,12 +513,14 @@ C:\Qt\5.15.1\msvc2019_64\mkspecs\features\exceptions.prf:
 C:\Qt\5.15.1\msvc2019_64\mkspecs\features\yacc.prf:
 C:\Qt\5.15.1\msvc2019_64\mkspecs\features\lex.prf:
 ..\RicercaDocs\RicercaDocs.pro:
+C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupport.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgets.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Gui.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Core.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\qtmain.prl:
 C:\Qt\5.15.1\msvc2019_64\mkspecs\features\build_pass.prf:
 ..\RicercaDocs\assets.qrc:
+C:\Qt\5.15.1\msvc2019_64\lib\Qt5PrintSupportd.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Widgetsd.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Guid.prl:
 C:\Qt\5.15.1\msvc2019_64\lib\Qt5Cored.prl:
