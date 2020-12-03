@@ -57,6 +57,7 @@ public:
     QPushButton *openFile;
     QPushButton *font;
     QPushButton *fontColor;
+    QSpacerItem *horizontalSpacer;
     QWidget *manage;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *exportPDF;
@@ -76,7 +77,8 @@ public:
         MainWindow->resize(1000, 700);
         MainWindow->setMinimumSize(QSize(1000, 700));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
-        QIcon icon(QIcon::fromTheme(QString::fromUtf8(":assets/screen/logo.png")));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/assets/screen/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setAutoFillBackground(true);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
@@ -207,8 +209,7 @@ public:
         newFile->setAutoFillBackground(false);
         newFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
 "text-align:bottom;"));
-        QIcon icon13(QIcon::fromTheme(QString::fromUtf8(":assets/icons/new.png")));
-        newFile->setIcon(icon13);
+        newFile->setIcon(icon11);
         newFile->setIconSize(QSize(60, 60));
         newFile->setFlat(true);
 
@@ -222,8 +223,7 @@ public:
         openFile->setLayoutDirection(Qt::LeftToRight);
         openFile->setAutoFillBackground(false);
         openFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon14(QIcon::fromTheme(QString::fromUtf8(":assets/icons/open.png")));
-        openFile->setIcon(icon14);
+        openFile->setIcon(icon6);
         openFile->setIconSize(QSize(60, 60));
         openFile->setFlat(true);
 
@@ -237,8 +237,7 @@ public:
         font->setLayoutDirection(Qt::LeftToRight);
         font->setAutoFillBackground(false);
         font->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon15(QIcon::fromTheme(QString::fromUtf8(":assets/icons/font.png")));
-        font->setIcon(icon15);
+        font->setIcon(icon1);
         font->setIconSize(QSize(60, 60));
         font->setFlat(true);
 
@@ -252,12 +251,17 @@ public:
         fontColor->setLayoutDirection(Qt::LeftToRight);
         fontColor->setAutoFillBackground(false);
         fontColor->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon16(QIcon::fromTheme(QString::fromUtf8(":assets/icons/fontColor.png")));
-        fontColor->setIcon(icon16);
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/assets/icons/fontColor.png"), QSize(), QIcon::Normal, QIcon::Off);
+        fontColor->setIcon(icon13);
         fontColor->setIconSize(QSize(60, 60));
         fontColor->setFlat(true);
 
         horizontalLayout->addWidget(fontColor);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
 
         tabWidget->addTab(design, QString());
         manage = new QWidget();
@@ -272,8 +276,7 @@ public:
         exportPDF->setLayoutDirection(Qt::LeftToRight);
         exportPDF->setAutoFillBackground(false);
         exportPDF->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon17(QIcon::fromTheme(QString::fromUtf8(":assets/icons/pdf.png")));
-        exportPDF->setIcon(icon17);
+        exportPDF->setIcon(icon9);
         exportPDF->setIconSize(QSize(60, 60));
         exportPDF->setFlat(true);
 
@@ -287,8 +290,7 @@ public:
         encrypt->setLayoutDirection(Qt::LeftToRight);
         encrypt->setAutoFillBackground(false);
         encrypt->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon18(QIcon::fromTheme(QString::fromUtf8(":assets/icons/encryption.png")));
-        encrypt->setIcon(icon18);
+        encrypt->setIcon(icon10);
         encrypt->setIconSize(QSize(60, 60));
         encrypt->setFlat(true);
 
