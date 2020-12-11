@@ -37,6 +37,7 @@ DISTFILES += \
     assets/icons/cut.png \
     assets/icons/encryption.png \
     assets/icons/font.png \
+    assets/icons/image.png \
     assets/icons/new.png \
     assets/icons/open.png \
     assets/icons/pdf.png \

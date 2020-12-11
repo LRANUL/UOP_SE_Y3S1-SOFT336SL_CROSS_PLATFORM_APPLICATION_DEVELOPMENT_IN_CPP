@@ -53,6 +53,10 @@ private slots:
 
     void on_exportPDF_clicked();
 
+    void on_insertImage_clicked();
+
+    void enableAutoEncryption();
+
 private:
     Ui::MainWindow *ui;
 

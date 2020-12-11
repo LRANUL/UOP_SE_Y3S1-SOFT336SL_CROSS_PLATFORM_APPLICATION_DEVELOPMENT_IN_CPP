@@ -15,5 +15,6 @@
         <file>assets/icons/undo.png</file>
         <file>assets/screen/logo.png</file>
         <file>assets/screen/splash.png</file>
+        <file>assets/icons/image.png</file>
     </qresource>
 </RCC>

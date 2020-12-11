@@ -45,6 +45,7 @@ public:
     QAction *actionEncrypt;
     QAction *actionNew;
     QAction *actionSave;
+    QAction *actionAuto_Encrypt;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QFrame *frame;
@@ -52,12 +53,13 @@ public:
     QTextEdit *textEdit;
     QTabWidget *tabWidget;
     QWidget *design;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *newFile;
-    QPushButton *openFile;
-    QPushButton *font;
+    QGridLayout *gridLayout_3;
     QPushButton *fontColor;
+    QPushButton *openFile;
     QSpacerItem *horizontalSpacer;
+    QPushButton *insertImage;
+    QPushButton *font;
+    QPushButton *newFile;
     QWidget *manage;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *exportPDF;
@@ -147,6 +149,9 @@ public:
         QIcon icon12;
         icon12.addFile(QString::fromUtf8(":/assets/icons/save.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSave->setIcon(icon12);
+        actionAuto_Encrypt = new QAction(MainWindow);
+        actionAuto_Encrypt->setObjectName(QString::fromUtf8("actionAuto_Encrypt"));
+        actionAuto_Encrypt->setCheckable(true);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("background-color: rgb(230, 230, 230);"));
@@ -190,30 +195,31 @@ public:
         tabWidget = new QTabWidget(frame);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setMinimumSize(QSize(0, 100));
-        tabWidget->setMaximumSize(QSize(16777215, 100));
+        tabWidget->setMaximumSize(QSize(16777215, 115));
         tabWidget->setAutoFillBackground(false);
         tabWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 250, 250);"));
         design = new QWidget();
         design->setObjectName(QString::fromUtf8("design"));
-        horizontalLayout = new QHBoxLayout(design);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        newFile = new QPushButton(design);
-        newFile->setObjectName(QString::fromUtf8("newFile"));
-        newFile->setMinimumSize(QSize(0, 60));
+        gridLayout_3 = new QGridLayout(design);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        fontColor = new QPushButton(design);
+        fontColor->setObjectName(QString::fromUtf8("fontColor"));
+        fontColor->setMinimumSize(QSize(0, 60));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial Nova Light"));
         font2.setPointSize(10);
-        newFile->setFont(font2);
-        newFile->setFocusPolicy(Qt::StrongFocus);
-        newFile->setLayoutDirection(Qt::LeftToRight);
-        newFile->setAutoFillBackground(false);
-        newFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
-"text-align:bottom;"));
-        newFile->setIcon(icon11);
-        newFile->setIconSize(QSize(60, 60));
-        newFile->setFlat(true);
+        fontColor->setFont(font2);
+        fontColor->setFocusPolicy(Qt::StrongFocus);
+        fontColor->setLayoutDirection(Qt::LeftToRight);
+        fontColor->setAutoFillBackground(false);
+        fontColor->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        QIcon icon13;
+        icon13.addFile(QString::fromUtf8(":/assets/icons/fontColor.png"), QSize(), QIcon::Normal, QIcon::Off);
+        fontColor->setIcon(icon13);
+        fontColor->setIconSize(QSize(60, 60));
+        fontColor->setFlat(true);
 
-        horizontalLayout->addWidget(newFile);
+        gridLayout_3->addWidget(fontColor, 0, 4, 2, 2);
 
         openFile = new QPushButton(design);
         openFile->setObjectName(QString::fromUtf8("openFile"));
@@ -227,7 +233,27 @@ public:
         openFile->setIconSize(QSize(60, 60));
         openFile->setFlat(true);
 
-        horizontalLayout->addWidget(openFile);
+        gridLayout_3->addWidget(openFile, 0, 2, 2, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer, 0, 7, 1, 1);
+
+        insertImage = new QPushButton(design);
+        insertImage->setObjectName(QString::fromUtf8("insertImage"));
+        insertImage->setMinimumSize(QSize(0, 60));
+        insertImage->setFont(font2);
+        insertImage->setFocusPolicy(Qt::StrongFocus);
+        insertImage->setLayoutDirection(Qt::LeftToRight);
+        insertImage->setAutoFillBackground(false);
+        insertImage->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        QIcon icon14;
+        icon14.addFile(QString::fromUtf8(":/assets/icons/image.png"), QSize(), QIcon::Normal, QIcon::Off);
+        insertImage->setIcon(icon14);
+        insertImage->setIconSize(QSize(60, 60));
+        insertImage->setFlat(true);
+
+        gridLayout_3->addWidget(insertImage, 0, 6, 1, 1);
 
         font = new QPushButton(design);
         font->setObjectName(QString::fromUtf8("font"));
@@ -241,27 +267,22 @@ public:
         font->setIconSize(QSize(60, 60));
         font->setFlat(true);
 
-        horizontalLayout->addWidget(font);
+        gridLayout_3->addWidget(font, 0, 3, 2, 1);
 
-        fontColor = new QPushButton(design);
-        fontColor->setObjectName(QString::fromUtf8("fontColor"));
-        fontColor->setMinimumSize(QSize(0, 60));
-        fontColor->setFont(font2);
-        fontColor->setFocusPolicy(Qt::StrongFocus);
-        fontColor->setLayoutDirection(Qt::LeftToRight);
-        fontColor->setAutoFillBackground(false);
-        fontColor->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        QIcon icon13;
-        icon13.addFile(QString::fromUtf8(":/assets/icons/fontColor.png"), QSize(), QIcon::Normal, QIcon::Off);
-        fontColor->setIcon(icon13);
-        fontColor->setIconSize(QSize(60, 60));
-        fontColor->setFlat(true);
+        newFile = new QPushButton(design);
+        newFile->setObjectName(QString::fromUtf8("newFile"));
+        newFile->setMinimumSize(QSize(0, 60));
+        newFile->setFont(font2);
+        newFile->setFocusPolicy(Qt::StrongFocus);
+        newFile->setLayoutDirection(Qt::LeftToRight);
+        newFile->setAutoFillBackground(false);
+        newFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);\n"
+"text-align:bottom;"));
+        newFile->setIcon(icon11);
+        newFile->setIconSize(QSize(60, 60));
+        newFile->setFlat(true);
 
-        horizontalLayout->addWidget(fontColor);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
+        gridLayout_3->addWidget(newFile, 0, 1, 1, 1);
 
         tabWidget->addTab(design, QString());
         manage = new QWidget();
@@ -313,7 +334,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1000, 26));
+        menubar->setGeometry(QRect(0, 0, 1000, 25));
         menuView = new QMenu(menubar);
         menuView->setObjectName(QString::fromUtf8("menuView"));
         menuHelp = new QMenu(menubar);
@@ -330,6 +351,7 @@ public:
         menubar->addAction(menuHelp->menuAction());
         menuView->addAction(actionExport);
         menuView->addAction(actionEncrypt);
+        menuView->addAction(actionAuto_Encrypt);
         menuHelp->addSeparator();
         menuHelp->addAction(actionAbout);
         menuHelp->addAction(actionCredits);
@@ -438,15 +460,20 @@ public:
 #if QT_CONFIG(shortcut)
         actionSave->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+S", nullptr));
 #endif // QT_CONFIG(shortcut)
+        actionAuto_Encrypt->setText(QCoreApplication::translate("MainWindow", "Auto Encrypt", nullptr));
+#if QT_CONFIG(tooltip)
+        actionAuto_Encrypt->setToolTip(QCoreApplication::translate("MainWindow", "Automatically encrypt file during save", nullptr));
+#endif // QT_CONFIG(tooltip)
         textEdit->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Times New Roman'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        newFile->setText(QCoreApplication::translate("MainWindow", "New File", nullptr));
-        openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
-        font->setText(QCoreApplication::translate("MainWindow", "Font Type", nullptr));
         fontColor->setText(QCoreApplication::translate("MainWindow", "Font Color", nullptr));
+        openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
+        insertImage->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
+        font->setText(QCoreApplication::translate("MainWindow", "Font Type", nullptr));
+        newFile->setText(QCoreApplication::translate("MainWindow", "New File", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(design), QCoreApplication::translate("MainWindow", "Design", nullptr));
         exportPDF->setText(QCoreApplication::translate("MainWindow", "Export to PDF", nullptr));
         encrypt->setText(QCoreApplication::translate("MainWindow", "Encrypt Document", nullptr));

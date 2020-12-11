@@ -64,6 +64,7 @@ DIST          = assets/icons/copy.png \
 		assets/icons/cut.png \
 		assets/icons/encryption.png \
 		assets/icons/font.png \
+		assets/icons/image.png \
 		assets/icons/new.png \
 		assets/icons/open.png \
 		assets/icons/pdf.png \
@@ -200,7 +201,8 @@ release\qrc_assets.cpp: ..\RicercaDocs\assets.qrc \
 		..\RicercaDocs\assets\icons\encryption.png \
 		..\RicercaDocs\assets\icons\new.png \
 		..\RicercaDocs\assets\icons\paste.png \
-		..\RicercaDocs\assets\icons\pdf.png
+		..\RicercaDocs\assets\icons\pdf.png \
+		..\RicercaDocs\assets\icons\image.png
 	C:\Qt\5.15.1\msvc2019_64\bin\rcc.exe -name assets ..\RicercaDocs\assets.qrc -o release\qrc_assets.cpp
 
 compiler_moc_predefs_make_all: release\moc_predefs.h
@@ -664,7 +666,20 @@ release\mainwindow.obj: ..\RicercaDocs\mainwindow.cpp ..\RicercaDocs\mainwindow.
 		C:\Qt\5.15.1\msvc2019_64\include\QtPrintSupport\QPrinter \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPrintSupport\qprinter.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtPrintSupport\qtprintsupportglobal.h \
-		C:\Qt\5.15.1\msvc2019_64\include\QtPrintSupport\qtprintsupport-config.h
+		C:\Qt\5.15.1\msvc2019_64\include\QtPrintSupport\qtprintsupport-config.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\QImageReader \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qimagereader.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtGui\qimageiohandler.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qplugin.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qpointer.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qjsonobject.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qjsonvalue.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcborvalue.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qdatetime.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qcborcommon.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\quuid.h \
+		C:\Qt\5.15.1\msvc2019_64\include\QtCore\qfactoryinterface.h
 
 release\simplecrypt.obj: ..\RicercaDocs\simplecrypt.cpp ..\RicercaDocs\simplecrypt.h \
 		C:\Qt\5.15.1\msvc2019_64\include\QtCore\QString \
