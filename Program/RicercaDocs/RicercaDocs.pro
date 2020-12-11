@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    simplecrypt.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    simplecrypt.h
 
 FORMS += \
     mainwindow.ui
@@ -35,6 +37,7 @@ DISTFILES += \
     assets/icons/cut.png \
     assets/icons/encryption.png \
     assets/icons/font.png \
+    assets/icons/image.png \
     assets/icons/new.png \
     assets/icons/open.png \
     assets/icons/pdf.png \

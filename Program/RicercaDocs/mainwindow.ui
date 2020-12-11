@@ -26,7 +26,8 @@
    <string>Ricerca Docs</string>
   </property>
   <property name="windowIcon">
-   <iconset theme=":assets/screen/logo.png"/>
+   <iconset resource="assets.qrc">
+    <normaloff>:/assets/screen/logo.png</normaloff>:/assets/screen/logo.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -149,7 +150,7 @@ p, li { white-space: pre-wrap; }
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>100</height>
+           <height>115</height>
           </size>
          </property>
          <property name="autoFillBackground">
@@ -165,8 +166,197 @@ p, li { white-space: pre-wrap; }
           <attribute name="title">
            <string>Design</string>
           </attribute>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="4" rowspan="2" colspan="2">
+            <widget class="QPushButton" name="fontColor">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Font Color</string>
+             </property>
+             <property name="icon">
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/fontColor.png</normaloff>:/assets/icons/fontColor.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2" rowspan="2">
+            <widget class="QPushButton" name="openFile">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Open File</string>
+             </property>
+             <property name="icon">
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/open.png</normaloff>:/assets/icons/open.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="7">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="6">
+            <widget class="QPushButton" name="insertImage">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Add Image</string>
+             </property>
+             <property name="icon">
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/image.png</normaloff>:/assets/icons/image.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3" rowspan="2">
+            <widget class="QPushButton" name="font">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial Nova Light</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(240, 240, 240);</string>
+             </property>
+             <property name="text">
+              <string>Font Type</string>
+             </property>
+             <property name="icon">
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/font.png</normaloff>:/assets/icons/font.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>60</width>
+               <height>60</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
             <widget class="QPushButton" name="newFile">
              <property name="minimumSize">
               <size>
@@ -197,265 +387,8 @@ text-align:bottom;</string>
               <string>New File</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/new.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="openFile">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Open File</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/open.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="font">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Font Type</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/font.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="fontColor">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Font Color</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/fontColor.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="cut">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Cut</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/cut.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="copy">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Copy</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/copy.png"/>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>60</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="paste">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>60</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Arial Nova Light</family>
-               <pointsize>10</pointsize>
-              </font>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::StrongFocus</enum>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="autoFillBackground">
-              <bool>false</bool>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(240, 240, 240);</string>
-             </property>
-             <property name="text">
-              <string>Paste</string>
-             </property>
-             <property name="icon">
-              <iconset theme=":assets/icons/paste.png"/>
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/new.png</normaloff>:/assets/icons/new.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -505,7 +438,8 @@ text-align:bottom;</string>
               <string>Export to PDF</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/pdf.png"/>
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/pdf.png</normaloff>:/assets/icons/pdf.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -548,7 +482,8 @@ text-align:bottom;</string>
               <string>Encrypt Document</string>
              </property>
              <property name="icon">
-              <iconset theme=":assets/icons/encryption.png"/>
+              <iconset resource="assets.qrc">
+               <normaloff>:/assets/icons/encryption.png</normaloff>:/assets/icons/encryption.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -590,7 +525,7 @@ text-align:bottom;</string>
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuView">
@@ -599,6 +534,7 @@ text-align:bottom;</string>
     </property>
     <addaction name="actionExport"/>
     <addaction name="actionEncrypt"/>
+    <addaction name="actionAuto_Encrypt"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -818,6 +754,17 @@ text-align:bottom;</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionAuto_Encrypt">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Encrypt</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically encrypt file during save</string>
    </property>
   </action>
  </widget>
