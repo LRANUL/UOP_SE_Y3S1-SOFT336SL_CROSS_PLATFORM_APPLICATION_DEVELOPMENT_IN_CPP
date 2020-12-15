@@ -57,9 +57,10 @@ private slots:
 
     void enableAutoEncryption();
 
+    void on_insertChart_clicked();
+
 private:
     Ui::MainWindow *ui;
-
 protected:
     void closeEvent(QCloseEvent *e);
 };

@@ -10,10 +10,14 @@
 #include <QColorDialog>
 #include <simplecrypt.h>
 #include <QBuffer>
-#include <QCryptographicHash>
 #include <QPdfWriter>
 #include <QPrinter>
 #include <QImageReader>
+#include <ricercachart.h>
+//#include<QtCharts>
+//#include<QChartView>
+//#include<QBarSet>
+//#include<QBarSeries>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -382,4 +386,15 @@ void MainWindow::on_insertImage_clicked()
                                                   "data:image/png;base64," +
                          imageBase64 + "/>";
     ui->textEdit->setHtml(embedImage);
+}
+
+void MainWindow::on_insertChart_clicked()
+{
+    RicercaChart chart;
+    QString imageBase64 = chart.newChart();
+
+    QString embededChart =  ui->textEdit->toHtml() + "<img src="
+                                                  "data:image/png;base64," +
+                         imageBase64 + "/>";
+      ui->textEdit->setHtml(embededChart);
 }
