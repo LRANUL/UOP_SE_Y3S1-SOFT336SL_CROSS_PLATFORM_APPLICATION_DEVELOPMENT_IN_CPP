@@ -14,6 +14,7 @@
 #include <QPrinter>
 #include <QImageReader>
 #include <ricercachart.h>
+
 //#include<QtCharts>
 //#include<QChartView>
 //#include<QBarSet>
@@ -59,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->textEdit,
             SIGNAL(redoAvailable(bool)), ui->actionRedo,
             SLOT(setEnabled(bool)));
-    // Trigger to check option on auto encryption to manage document saving process
+    // Trigger to check option on   encryption to manage document saving process
     connect(ui->actionAuto_Encrypt,
             SIGNAL(toggled()), this,
             SLOT(enableAutoEncryption()));
@@ -393,8 +394,8 @@ void MainWindow::on_insertChart_clicked()
     RicercaChart chart;
     QString imageBase64 = chart.newChart();
 
-    QString embededChart =  ui->textEdit->toHtml() + "<img src="
-                                                  "data:image/png;base64," +
-                         imageBase64 + "/>";
-      ui->textEdit->setHtml(embededChart);
+    QString embededChart = ui->textEdit->toHtml() + "<img src="
+                                                    "data:image/png;base64," +
+                           imageBase64 + "/>";
+    ui->textEdit->setHtml(embededChart);
 }

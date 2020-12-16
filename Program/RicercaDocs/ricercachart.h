@@ -3,9 +3,9 @@
 
 #include <QWidget>
 
-
-namespace Ui {
-class RicercaChart;
+namespace Ui
+{
+    class RicercaChart;
 }
 
 class RicercaChart : public QWidget
@@ -15,8 +15,11 @@ class RicercaChart : public QWidget
 public:
     explicit RicercaChart(QWidget *parent = nullptr);
     ~RicercaChart();
-QString newChart();
 
+    QString newChart();
+
+private slots:
+    void addLineChart();
 private:
     Ui::RicercaChart *ui;
 };
