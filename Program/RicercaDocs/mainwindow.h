@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    // void addChart_clicked(QString chart);
 private slots:
     void on_actionCredits_triggered();
 
@@ -58,6 +58,12 @@ private slots:
     void enableAutoEncryption();
 
     void on_insertChart_clicked();
+
+    void lineChart();
+
+    void pieChart();
+
+    void barChart();
 
 private:
     Ui::MainWindow *ui;
