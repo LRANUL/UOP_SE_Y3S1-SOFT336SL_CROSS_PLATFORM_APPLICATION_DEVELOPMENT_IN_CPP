@@ -54,11 +54,12 @@ public:
     QTabWidget *tabWidget;
     QWidget *design;
     QGridLayout *gridLayout_3;
-    QPushButton *fontColor;
     QPushButton *openFile;
+    QPushButton *fontColor;
+    QPushButton *font;
     QSpacerItem *horizontalSpacer;
     QPushButton *insertImage;
-    QPushButton *font;
+    QPushButton *insertChart;
     QPushButton *newFile;
     QWidget *manage;
     QHBoxLayout *horizontalLayout_3;
@@ -194,20 +195,36 @@ public:
 
         tabWidget = new QTabWidget(frame);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setEnabled(true);
         tabWidget->setMinimumSize(QSize(0, 100));
         tabWidget->setMaximumSize(QSize(16777215, 115));
         tabWidget->setAutoFillBackground(false);
         tabWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(250, 250, 250);"));
+        tabWidget->setTabsClosable(false);
         design = new QWidget();
         design->setObjectName(QString::fromUtf8("design"));
         gridLayout_3 = new QGridLayout(design);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        fontColor = new QPushButton(design);
-        fontColor->setObjectName(QString::fromUtf8("fontColor"));
-        fontColor->setMinimumSize(QSize(0, 60));
+        openFile = new QPushButton(design);
+        openFile->setObjectName(QString::fromUtf8("openFile"));
+        openFile->setMinimumSize(QSize(0, 60));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Arial Nova Light"));
         font2.setPointSize(10);
+        openFile->setFont(font2);
+        openFile->setFocusPolicy(Qt::StrongFocus);
+        openFile->setLayoutDirection(Qt::LeftToRight);
+        openFile->setAutoFillBackground(false);
+        openFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        openFile->setIcon(icon6);
+        openFile->setIconSize(QSize(60, 60));
+        openFile->setFlat(true);
+
+        gridLayout_3->addWidget(openFile, 1, 1, 1, 1);
+
+        fontColor = new QPushButton(design);
+        fontColor->setObjectName(QString::fromUtf8("fontColor"));
+        fontColor->setMinimumSize(QSize(0, 60));
         fontColor->setFont(font2);
         fontColor->setFocusPolicy(Qt::StrongFocus);
         fontColor->setLayoutDirection(Qt::LeftToRight);
@@ -219,25 +236,25 @@ public:
         fontColor->setIconSize(QSize(60, 60));
         fontColor->setFlat(true);
 
-        gridLayout_3->addWidget(fontColor, 0, 4, 2, 2);
+        gridLayout_3->addWidget(fontColor, 1, 3, 1, 1);
 
-        openFile = new QPushButton(design);
-        openFile->setObjectName(QString::fromUtf8("openFile"));
-        openFile->setMinimumSize(QSize(0, 60));
-        openFile->setFont(font2);
-        openFile->setFocusPolicy(Qt::StrongFocus);
-        openFile->setLayoutDirection(Qt::LeftToRight);
-        openFile->setAutoFillBackground(false);
-        openFile->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        openFile->setIcon(icon6);
-        openFile->setIconSize(QSize(60, 60));
-        openFile->setFlat(true);
+        font = new QPushButton(design);
+        font->setObjectName(QString::fromUtf8("font"));
+        font->setMinimumSize(QSize(0, 60));
+        font->setFont(font2);
+        font->setFocusPolicy(Qt::StrongFocus);
+        font->setLayoutDirection(Qt::LeftToRight);
+        font->setAutoFillBackground(false);
+        font->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        font->setIcon(icon1);
+        font->setIconSize(QSize(60, 60));
+        font->setFlat(true);
 
-        gridLayout_3->addWidget(openFile, 0, 2, 2, 1);
+        gridLayout_3->addWidget(font, 1, 2, 1, 1);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_3->addItem(horizontalSpacer, 0, 7, 1, 1);
+        gridLayout_3->addItem(horizontalSpacer, 1, 6, 1, 1);
 
         insertImage = new QPushButton(design);
         insertImage->setObjectName(QString::fromUtf8("insertImage"));
@@ -253,21 +270,23 @@ public:
         insertImage->setIconSize(QSize(60, 60));
         insertImage->setFlat(true);
 
-        gridLayout_3->addWidget(insertImage, 0, 6, 1, 1);
+        gridLayout_3->addWidget(insertImage, 1, 4, 1, 1);
 
-        font = new QPushButton(design);
-        font->setObjectName(QString::fromUtf8("font"));
-        font->setMinimumSize(QSize(0, 60));
-        font->setFont(font2);
-        font->setFocusPolicy(Qt::StrongFocus);
-        font->setLayoutDirection(Qt::LeftToRight);
-        font->setAutoFillBackground(false);
-        font->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
-        font->setIcon(icon1);
-        font->setIconSize(QSize(60, 60));
-        font->setFlat(true);
+        insertChart = new QPushButton(design);
+        insertChart->setObjectName(QString::fromUtf8("insertChart"));
+        insertChart->setMinimumSize(QSize(0, 60));
+        insertChart->setFont(font2);
+        insertChart->setFocusPolicy(Qt::StrongFocus);
+        insertChart->setLayoutDirection(Qt::LeftToRight);
+        insertChart->setAutoFillBackground(false);
+        insertChart->setStyleSheet(QString::fromUtf8("background-color: rgb(240, 240, 240);"));
+        QIcon icon15;
+        icon15.addFile(QString::fromUtf8(":/assets/icons/chart.png"), QSize(), QIcon::Normal, QIcon::Off);
+        insertChart->setIcon(icon15);
+        insertChart->setIconSize(QSize(60, 60));
+        insertChart->setFlat(true);
 
-        gridLayout_3->addWidget(font, 0, 3, 2, 1);
+        gridLayout_3->addWidget(insertChart, 1, 5, 1, 1);
 
         newFile = new QPushButton(design);
         newFile->setObjectName(QString::fromUtf8("newFile"));
@@ -282,7 +301,7 @@ public:
         newFile->setIconSize(QSize(60, 60));
         newFile->setFlat(true);
 
-        gridLayout_3->addWidget(newFile, 0, 1, 1, 1);
+        gridLayout_3->addWidget(newFile, 1, 0, 1, 1);
 
         tabWidget->addTab(design, QString());
         manage = new QWidget();
@@ -323,7 +342,7 @@ public:
 
         tabWidget->addTab(manage, QString());
 
-        gridLayout_2->addWidget(tabWidget, 0, 0, 1, 1);
+        gridLayout_2->addWidget(tabWidget, 1, 0, 1, 1);
 
 
         gridLayout->addWidget(frame, 1, 0, 2, 1);
@@ -469,10 +488,11 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Times New Roman'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
-        fontColor->setText(QCoreApplication::translate("MainWindow", "Font Color", nullptr));
         openFile->setText(QCoreApplication::translate("MainWindow", "Open File", nullptr));
-        insertImage->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
+        fontColor->setText(QCoreApplication::translate("MainWindow", "Font Color", nullptr));
         font->setText(QCoreApplication::translate("MainWindow", "Font Type", nullptr));
+        insertImage->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
+        insertChart->setText(QCoreApplication::translate("MainWindow", "Add  Chart", nullptr));
         newFile->setText(QCoreApplication::translate("MainWindow", "New File", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(design), QCoreApplication::translate("MainWindow", "Design", nullptr));
         exportPDF->setText(QCoreApplication::translate("MainWindow", "Export to PDF", nullptr));

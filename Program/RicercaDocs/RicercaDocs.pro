@@ -1,5 +1,7 @@
-QT       += core gui
+QT += core gui
 QT += printsupport
+QT += charts
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -11,14 +13,17 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    ricercachart.cpp \
     simplecrypt.cpp
 
 HEADERS += \
     mainwindow.h \
+    ricercachart.h \
     simplecrypt.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    ricercachart.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -33,6 +38,7 @@ RESOURCES += \
 ANDROID_ABIS = armeabi-v7a
 
 DISTFILES += \
+    assets/icons/chart.png \
     assets/icons/copy.png \
     assets/icons/cut.png \
     assets/icons/encryption.png \

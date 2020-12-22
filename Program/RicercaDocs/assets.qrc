@@ -16,5 +16,6 @@
         <file>assets/screen/logo.png</file>
         <file>assets/screen/splash.png</file>
         <file>assets/icons/image.png</file>
+        <file>assets/icons/chart.png</file>
     </qresource>
 </RCC>

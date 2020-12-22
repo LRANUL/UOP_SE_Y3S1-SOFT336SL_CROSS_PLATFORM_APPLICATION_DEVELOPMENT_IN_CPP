@@ -10,10 +10,15 @@
 #include <QColorDialog>
 #include <simplecrypt.h>
 #include <QBuffer>
-#include <QCryptographicHash>
 #include <QPdfWriter>
 #include <QPrinter>
 #include <QImageReader>
+//#include <ricercachart.h>
+#include <QInputDialog>
+#include <QtCharts>
+#include <QChartView>
+#include <QBarSet>
+#include <QBarSeries>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -55,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->textEdit,
             SIGNAL(redoAvailable(bool)), ui->actionRedo,
             SLOT(setEnabled(bool)));
-    // Trigger to check option on auto encryption to manage document saving process
+    // Trigger to check option on   encryption to manage document saving process
     connect(ui->actionAuto_Encrypt,
             SIGNAL(toggled()), this,
             SLOT(enableAutoEncryption()));
@@ -383,3 +388,188 @@ void MainWindow::on_insertImage_clicked()
                          imageBase64 + "/>";
     ui->textEdit->setHtml(embedImage);
 }
+void MainWindow::on_insertChart_clicked()
+{
+    QStringList items;
+    items << tr("Line Chart") << tr("Pie Chart") << tr("Bar Chart");
+
+    bool ok;
+    QString item = QInputDialog::getItem(this, "Select Chart Type",
+                                         tr("Chart Type:"), items, 0, false, &ok);
+
+    if (ok == false)
+    {
+    }
+    else if (item == "Line Chart")
+    {
+        lineChart();
+    }
+    else if (item == "Pie Chart")
+    {
+        pieChart();
+    }
+    else if (item == "Bar Chart")
+    {
+        barChart();
+    }
+}
+
+void MainWindow::lineChart()
+{
+
+    QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
+                                              tr("Chart Name:"), QLineEdit::Normal);
+    int coordinates = QInputDialog::getInt(this, tr("Provide Total Coordinates"),
+                                           tr("No of coordinates:"), QLineEdit::Normal);
+    int x[coordinates];
+    int y[coordinates];
+    for (int i = 0; i < coordinates; i++)
+    {
+        x[i] = QInputDialog::getInt(this, tr("X-Axis Coordinates"), "Value for x" + QString::number(i + 1) + ":", QLineEdit::Normal);
+
+        y[i] = QInputDialog::getInt(this, tr("Y-Axis Coordinates"), "Value for y" + QString::number(i + 1) + ":", QLineEdit::Normal);
+    }
+    QLineSeries *series = new QLineSeries();
+    for (int i = 0; i < coordinates; i++)
+    {
+        series->append(x[i], y[i]);
+    }
+
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle(chartName);
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    QPixmap image = chartView->grab();
+    image.save("a.png", "PNG");
+    QByteArray byteArray;
+    QBuffer buffer(&byteArray);
+    image.save(&buffer, "PNG");
+    QString imageBase64 = QString::fromLatin1(byteArray.toBase64().data());
+
+    QString embededChart = ui->textEdit->toHtml() + "<img src="
+                                                    "data:image/png;base64," +
+                           imageBase64 + "/>";
+    ui->textEdit->setHtml(embededChart);
+}
+
+void MainWindow::pieChart()
+{
+    QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
+                                              tr("Chart Name:"), QLineEdit::Normal);
+    int values = QInputDialog::getInt(this, tr("Total Chart Values"),
+                                      tr("No of Values:"), QLineEdit::Normal);
+    QString valueName[values];
+    int value[values];
+    for (int i = 0; i < values; i++)
+    {
+        valueName[i] = QInputDialog::getText(this, tr("Series Name"), "Name:", QLineEdit::Normal);
+
+        value[i] = QInputDialog::getInt(this, tr("Series Value"), "Value for Serie" + valueName[i] + ":", QLineEdit::Normal);
+    }
+    QPieSeries *series = new QPieSeries();
+    for (int i = 0; i < values; i++)
+    {
+        series->append(valueName[i], value[i]);
+    }
+    QPieSlice *slice = series->slices().at(1);
+    slice->setExploded();
+    slice->setLabelVisible();
+    slice->setPen(QPen(Qt::darkBlue, 3));
+    slice->setBrush(Qt::red);
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle(chartName);
+    chart->legend()->hide();
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    QPixmap image = chartView->grab();
+    image.save("a.png", "PNG");
+    QByteArray byteArray;
+    QBuffer buffer(&byteArray);
+    image.save(&buffer, "PNG");
+    QString imageBase64 = QString::fromLatin1(byteArray.toBase64().data());
+
+    QString embededChart = ui->textEdit->toHtml() + "<img src="
+                                                    "data:image/png;base64," +
+                           imageBase64 + "/>";
+    ui->textEdit->setHtml(embededChart);
+}
+
+void MainWindow::barChart()
+{
+    QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
+                                              tr("Chart Name:"), QLineEdit::Normal);
+    int serie = QInputDialog::getInt(this, tr("Provide Total Series"),
+                                     tr("No of Series:"), QLineEdit::Normal);
+    int sets = QInputDialog::getInt(this, tr("Provide Total Sets"),
+                                    tr("No of Sets:"), QLineEdit::Normal);
+
+    QString setName[sets];
+    int setValue[sets];
+    QBarSeries *series = new QBarSeries();
+    for (int i = 0; i < serie; i++)
+    {
+        setName[i] = QInputDialog::getText(this, tr("Set Name"), "Name for set-" + QString::number(i + 1) + ":", QLineEdit::Normal);
+
+        for (int i = 0; i < sets; i++)
+        {
+            setValue[i] = QInputDialog::getInt(this, tr("Set Value"), "Value " + QString::number(i + 1) + " :", QLineEdit::Normal);
+            QBarSet *set[i];
+            set[i] = new QBarSet(setName[i]);
+            *set[i] << setValue[i];
+            series->append(set[i]);
+        }
+    }
+
+    QChart *chart = new QChart();
+    chart->legend()->hide();
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle(chartName);
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    QPixmap image = chartView->grab();
+    image.save("a.png", "PNG");
+    QByteArray byteArray;
+    QBuffer buffer(&byteArray);
+    image.save(&buffer, "PNG");
+    QString imageBase64 = QString::fromLatin1(byteArray.toBase64().data());
+
+    QString embededChart = ui->textEdit->toHtml() + "<img src="
+                                                    "data:image/png;base64," +
+                           imageBase64 + "/>";
+    ui->textEdit->setHtml(embededChart);
+}
+/*  HOLD DEVELOPMENT DUE TO BUGS IDENTIFIED ON THE CALL BACK FUNCTION
+ *  ASSUMING AN ISSUE WITH REFERENCES AND SHOWS FURTHER REQUIREMENT TO THE USE OF EVENT- DRIVEN FRAMEWORK
+ *  FURTHER DEVELOPMENT TIME AND TESTING IS REQUIRED.
+ *
+ *  WORK HALTED HERE DUE TO PROJECT DELIVERY ON 7TH JANUARY 2021
+ *
+void MainWindow::on_insertChart_clicked()
+{
+//    RicercaChart chart;
+//    QString imageBase64 = chart.newChart();
+//    chart.newChart();
+//    qWarning() << imageBase64 + "MAINFUNC";
+//    QString embededChart = ui->textEdit->toHtml() + "<img src="
+//                                                    "data:image/png;base64," +
+//                           imageBase64 + "/>";
+//    ui->textEdit->setHtml(embededChart);
+}
+
+void MainWindow::addChart_clicked(QString chart)
+{
+
+    QString imageBase64 = chart;
+
+    QString embededChart = MainWindow::ui->textEdit->toHtml() + "<img src=data:image/png;base64," + imageBase64 + "/>";
+
+    MainWindow::ui->textEdit->setHtml(embededChart);
+
+    qWarning() <<  "MAIN";
+}
+*/
