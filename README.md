@@ -85,12 +85,42 @@ program.
 
 **Copyright (c) Ranul Ladduwahetty. All rights reserved.**
 
-Licensed under the [MIT](LICENSE.txt) license.
+Licensed under the [GNU GPLv3](LICENSE.txt) license.
 
-All files and information are copyright by Ranul Ladduwahetty, 
-and may not be duplicated, copied, modified or adapted, 
-in any way without our written permission. 
-Our product may contain our service marks or trademarks as well as those of our affiliates or other companies, 
-in the form of words, graphics, and logos.
-This product is solely an property of Ranul Ladduwahetty and holds all rights to it, any copying, redistribution, use or publication by you of any such Content, is strictly prohibited. 
-Your use of our Product and Services does not grant you any ownership rights to our Product.
+This product is solely an property of Ranul Ladduwahetty and holds all rights to it.
+Your use of our Product or Services does not grant you any ownership rights to our Product.
+Ricerca Docs is a Notes taking application developed to secure intellectual property of researchers, such as research documents.
+Application uses data encrytion technologies and OpenSource Libraries to facilitate security of Ricerca Docs, authors of third-party libraries are credited where possible.
+
+This was developed under Qt OpenSource GNU GPLv3 License for a University Project.
+    
+    Copyright (C) 2021 Ranul Ladduwahetty
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+    Ricerca Docs  Copyright (C) 2021 Ranul Ladduwahetty
+    This program comes with ABSOLUTELY NO WARRANTY; for details see Section 2.
+    This is free software, and you are welcome to redistribute it
+    under certain conditions; see Section 1 for details.
+
+Section 1
+
+You may redistribute the application by crediting the author of the application and including this license, any part of the source code.
+Please contact author before distributing any copies.
+
+Section 2
+
+This was developed under Qt OpenSource GNU GPLv3 License as a part of a University Project, 
+and may contain unresolved bugs and program code which might cause damage and come comes with ABSOLUTELY NO WARRANTY.
