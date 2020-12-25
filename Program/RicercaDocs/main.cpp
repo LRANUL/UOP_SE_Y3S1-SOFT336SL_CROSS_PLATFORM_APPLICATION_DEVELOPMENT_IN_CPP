@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setApplicationName("Ricerca Docs");
-    a.setApplicationVersion("1.0");
+    a.setApplicationVersion("1.0.0");
     a.setApplicationDisplayName("Ricerca Docs");
     a.setWindowIcon(QIcon(":/assets/screen/logo.png"));
     QPixmap pixmap(":/assets/screen/splash.png");

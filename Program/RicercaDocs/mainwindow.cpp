@@ -222,13 +222,15 @@ void MainWindow::on_actionSave_triggered()
         setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
     }
 }
-
+/*  Creates a new object of the main window
+*/
 void MainWindow::on_newFile_clicked()
 {
     MainWindow *newEditor = new MainWindow();
     newEditor->show();
-}
-
+}/* Opens document files both encypted and non encrypte files, conditions
+  * setup to manage process.
+*/
 void MainWindow::on_openFile_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(
@@ -265,7 +267,8 @@ void MainWindow::on_openFile_clicked()
         }
     }
 }
-
+/* Font editor allows text type style changing 
+ * */
 void MainWindow::on_font_clicked()
 {
     bool ok;
@@ -276,7 +279,8 @@ void MainWindow::on_font_clicked()
         ui->textEdit->QTextEdit::setCurrentFont(selection);
     }
 }
-
+/* Font editor allows text color style changing 
+ * */
 void MainWindow::on_fontColor_clicked()
 {
 
@@ -284,7 +288,8 @@ void MainWindow::on_fontColor_clicked()
 
     ui->textEdit->QTextEdit::setTextColor(selection);
 }
-
+/* Calls simplecrypt third party library to handle data encrytion requests
+*/
 void MainWindow::on_encrypt_clicked()
 {
     SimpleCrypt crypto(52696365726361);                             // Ricerca Hex value used
@@ -309,7 +314,8 @@ void MainWindow::on_encrypt_clicked()
         setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
     }
 }
-
+/* Calls simplecrypt third party library to handle data encrytion requests
+*/
 void MainWindow::on_actionEncrypt_triggered()
 {
     SimpleCrypt crypto(52696365726361);                             // Ricerca Hex value used
@@ -334,7 +340,8 @@ void MainWindow::on_actionEncrypt_triggered()
         setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
     }
 }
-
+/* Document to PDF export method uses inbult libraries and predefined settings.
+*/
 void MainWindow::on_actionExport_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget *)0, "Export to PDF", QString(), "*.pdf");
@@ -351,7 +358,8 @@ void MainWindow::on_actionExport_triggered()
     doc.setPageSize(printer.pageRect().size());
     doc.print(&printer);
 }
-
+/* Document to PDF export method uses inbult libraries and predefined settings.
+*/
 void MainWindow::on_exportPDF_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName((QWidget *)0, "Export to PDF", QString(), "*.pdf");
@@ -368,7 +376,8 @@ void MainWindow::on_exportPDF_clicked()
     doc.setPageSize(printer.pageRect().size());
     doc.print(&printer);
 }
-
+/* Document to mime data addtion method.
+*/
 void MainWindow::on_insertImage_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(
@@ -388,6 +397,9 @@ void MainWindow::on_insertImage_clicked()
                          imageBase64 + "/>";
     ui->textEdit->setHtml(embedImage);
 }
+/* Uses QtCharts an external compoenent of Qt, mandatory for future development
+ * basic handling of chart creation.
+*/
 void MainWindow::on_insertChart_clicked()
 {
     QStringList items;
@@ -412,8 +424,7 @@ void MainWindow::on_insertChart_clicked()
     {
         barChart();
     }
-}
-
+}// Line Chart method
 void MainWindow::lineChart()
 {
 
@@ -443,7 +454,7 @@ void MainWindow::lineChart()
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     QPixmap image = chartView->grab();
-    image.save("a.png", "PNG");
+    image.save("chart.png", "PNG");
     QByteArray byteArray;
     QBuffer buffer(&byteArray);
     image.save(&buffer, "PNG");
@@ -454,7 +465,7 @@ void MainWindow::lineChart()
                            imageBase64 + "/>";
     ui->textEdit->setHtml(embededChart);
 }
-
+// Pie chart method
 void MainWindow::pieChart()
 {
     QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
@@ -486,7 +497,7 @@ void MainWindow::pieChart()
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     QPixmap image = chartView->grab();
-    image.save("a.png", "PNG");
+    image.save("chart.png", "PNG");
     QByteArray byteArray;
     QBuffer buffer(&byteArray);
     image.save(&buffer, "PNG");
@@ -497,7 +508,7 @@ void MainWindow::pieChart()
                            imageBase64 + "/>";
     ui->textEdit->setHtml(embededChart);
 }
-
+// Bar chart method
 void MainWindow::barChart()
 {
     QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
@@ -532,7 +543,7 @@ void MainWindow::barChart()
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     QPixmap image = chartView->grab();
-    image.save("a.png", "PNG");
+    image.save("chart.png", "PNG");
     QByteArray byteArray;
     QBuffer buffer(&byteArray);
     image.save(&buffer, "PNG");
