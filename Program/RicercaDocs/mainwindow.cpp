@@ -94,11 +94,10 @@ void MainWindow::on_actionAbout_triggered()
                                 "This would prevent malicous users from viewing important documents on reseacher's computer."));
 }
 
-// Opens a new window, creates a new note-taking window
+// Opens a new window, creates a new note-taking window, creates a new object of the main window
 void MainWindow::on_actionNew_triggered()
 {
-    MainWindow *newEditor = new MainWindow();
-    newEditor->show();
+    on_newFile_clicked();
 }
 
 // Manages memory and temporary data by closing all child windows and processed once the parent window receives and exit call
@@ -111,13 +110,7 @@ void MainWindow::on_actionExit_triggered()
 // Opens a Font selection dialog to apply font type styles to text of notes-taking app
 void MainWindow::on_actionChangeFont_triggered()
 {
-    bool ok;
-    QFont selection = QFontDialog::getFont(&ok, ui->textEdit->currentFont(), this);
-    if (ok)
-    {
-
-        ui->textEdit->QTextEdit::setCurrentFont(selection);
-    }
+  on_font_clicked();
 }
 
 // Calls the setwindowModified method once the textchange event is triggered and causes an update to title
@@ -162,39 +155,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
 */
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(
-        this,
-        tr("Open File"),
-        QDir::currentPath(),
-        "All files (*.*)");
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly))
-        QMessageBox::information(this, tr("Info"), file.errorString());
-    else
-    {
-        QTextStream documentinput(&file);
-        QString text = documentinput.readAll();
-        QMessageBox::StandardButton Reponse; //    Creates a varaible to hold Message Box reponse from user
-        Reponse = QMessageBox::warning(this, tr("Document Security Check"),
-                                       tr("Select 'Yes' Option if file is encrypted\n"
-                                          "Select 'No' Option if file is not encrypted\n\n"
-                                          "In a event the the opened file is courrpted or blank try opening as a non encrypted file."),
-                                       QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-        if (Reponse == QMessageBox::No) //      Checks reponse and hold window from closing
-        {
-            ui->textEdit->setText(text);
-            setWindowModified(false);
-            setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
-        }
-        else if (Reponse == QMessageBox::Yes) //      Checks reponse and closes window
-        {
-            SimpleCrypt crypto(Q_UINT64_C(52696365726361));
-            QString decrypted = crypto.decryptToString(text);
-            ui->textEdit->setText(decrypted);
-            setWindowModified(false);
-            setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
-        }
-    }
+    on_openFile_clicked();
 }
 /* Save the working document to a user prefered location, user is provide with a file save dialog fro selecting the save location
  * However this will not encrypt the file unless done manually or if 'Auto Encrypt' function is enabled.
@@ -222,13 +183,8 @@ void MainWindow::on_actionSave_triggered()
         setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
     }
 }
-/*  Creates a new object of the main window
-*/
-void MainWindow::on_newFile_clicked()
-{
-    MainWindow *newEditor = new MainWindow();
-    newEditor->show();
-}/* Opens document files both encypted and non encrypte files, conditions
+
+/* Opens document files both encypted and non encrypte files, conditions
   * setup to manage process.
 */
 void MainWindow::on_openFile_clicked()
@@ -292,27 +248,8 @@ void MainWindow::on_fontColor_clicked()
 */
 void MainWindow::on_encrypt_clicked()
 {
-    SimpleCrypt crypto(52696365726361);                             // Ricerca Hex value used
-    crypto.setCompressionMode(SimpleCrypt::CompressionAlways);      // data compress
-    crypto.setIntegrityProtectionMode(SimpleCrypt::ProtectionHash); // hash protect for data integrity
+    on_actionEncrypt_triggered();
 
-    QString text = ui->textEdit->toHtml();
-    QString CypherText = crypto.encryptToString(text);
-    if (crypto.lastError() == SimpleCrypt::ErrorNoError)
-    {
-        QString fileName = QFileDialog::getSaveFileName(
-            this,
-            tr("Save File"),
-            QDir::currentPath(),
-            "Text Document (*.txt)");
-        QFile file(fileName);
-        if (!file.open(QIODevice::WriteOnly))
-            QMessageBox::information(this, tr("Info"), file.errorString());
-        QTextStream documentoutput(&file);
-        documentoutput << CypherText;
-        setWindowModified(false);
-        setWindowTitle(QString("%1[*] - %2").arg(fileName.isNull() ? "untitled" : QFileInfo(fileName).fileName()).arg(QApplication::applicationName()));
-    }
 }
 /* Calls simplecrypt third party library to handle data encrytion requests
 */
@@ -344,19 +281,7 @@ void MainWindow::on_actionEncrypt_triggered()
 */
 void MainWindow::on_actionExport_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName((QWidget *)0, "Export to PDF", QString(), "*.pdf");
-    if (QFileInfo(fileName).suffix().isEmpty())
-    {
-        fileName.append(".pdf");
-    }
-    QPrinter printer(QPrinter::PrinterResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setPaperSize(QPrinter::A4);
-    printer.setOutputFileName(fileName);
-    QTextDocument doc;
-    doc.setHtml(ui->textEdit->toHtml());
-    doc.setPageSize(printer.pageRect().size());
-    doc.print(&printer);
+   on_exportPDF_clicked();
 }
 /* Document to PDF export method uses inbult libraries and predefined settings.
 */
@@ -429,9 +354,9 @@ void MainWindow::lineChart()
 {
 
     QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
-                                              tr("Chart Name:"), QLineEdit::Normal);
+                                              tr("Chart Name: "), QLineEdit::Normal);
     int coordinates = QInputDialog::getInt(this, tr("Provide Total Coordinates"),
-                                           tr("No of coordinates:"), QLineEdit::Normal);
+                                           tr("No of coordinates: "), QLineEdit::Normal);
     int x[coordinates];
     int y[coordinates];
     for (int i = 0; i < coordinates; i++)
@@ -469,16 +394,16 @@ void MainWindow::lineChart()
 void MainWindow::pieChart()
 {
     QString chartName = QInputDialog::getText(this, tr("Provide Chart Name"),
-                                              tr("Chart Name:"), QLineEdit::Normal);
+                                              tr("Chart Name: "), QLineEdit::Normal);
     int values = QInputDialog::getInt(this, tr("Total Chart Values"),
-                                      tr("No of Values:"), QLineEdit::Normal);
+                                      tr("No of Values: "), QLineEdit::Normal);
     QString valueName[values];
     int value[values];
     for (int i = 0; i < values; i++)
     {
-        valueName[i] = QInputDialog::getText(this, tr("Series Name"), "Name:", QLineEdit::Normal);
+        valueName[i] = QInputDialog::getText(this, tr("Series Name "), "Name: ", QLineEdit::Normal);
 
-        value[i] = QInputDialog::getInt(this, tr("Series Value"), "Value for Serie" + valueName[i] + ":", QLineEdit::Normal);
+        value[i] = QInputDialog::getInt(this, tr("Series Value"), "Value for Serie " + valueName[i] + ":", QLineEdit::Normal);
     }
     QPieSeries *series = new QPieSeries();
     for (int i = 0; i < values; i++)
@@ -523,7 +448,7 @@ void MainWindow::barChart()
     QBarSeries *series = new QBarSeries();
     for (int i = 0; i < serie; i++)
     {
-        setName[i] = QInputDialog::getText(this, tr("Set Name"), "Name for set-" + QString::number(i + 1) + ":", QLineEdit::Normal);
+        setName[i] = QInputDialog::getText(this, tr("Set Name"), "Name for set - " + QString::number(i + 1) + ":", QLineEdit::Normal);
 
         for (int i = 0; i < sets; i++)
         {

@@ -1,0 +1,386 @@
+\doxysection{Simple\+Crypt Class Reference}
+\label{class_simple_crypt}\index{SimpleCrypt@{SimpleCrypt}}
+
+
+Simple encryption and decryption of strings and byte arrays.  
+
+
+
+
+{\ttfamily \#include $<$simplecrypt.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Compression\+Mode} \{ \textbf{ Compression\+Auto}, 
+\textbf{ Compression\+Always}, 
+\textbf{ Compression\+Never}
+ \}
+\item 
+enum \textbf{ Integrity\+Protection\+Mode} \{ \textbf{ Protection\+None}, 
+\textbf{ Protection\+Checksum}, 
+\textbf{ Protection\+Hash}
+ \}
+\item 
+enum \textbf{ Error} \{ \textbf{ Error\+No\+Error}, 
+\textbf{ Error\+No\+Key\+Set}, 
+\textbf{ Error\+Unknown\+Version}, 
+\textbf{ Error\+Integrity\+Failed}
+ \}
+\item 
+\mbox{\label{class_simple_crypt_abc7918ae3afd91a98831fad119add27a}} 
+enum {\bfseries Crypto\+Flag} \{ {\bfseries Crypto\+Flag\+None} = 0, 
+{\bfseries Crypto\+Flag\+Compression} = 0x01, 
+{\bfseries Crypto\+Flag\+Checksum} = 0x02, 
+{\bfseries Crypto\+Flag\+Hash} = 0x04
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Simple\+Crypt} ()
+\item 
+\textbf{ Simple\+Crypt} (quint64 key)
+\item 
+void \textbf{ set\+Key} (quint64 key)
+\item 
+bool \textbf{ has\+Key} () const
+\item 
+void \textbf{ set\+Compression\+Mode} (\textbf{ Compression\+Mode} mode)
+\item 
+\textbf{ Compression\+Mode} \textbf{ compression\+Mode} () const
+\item 
+void \textbf{ set\+Integrity\+Protection\+Mode} (\textbf{ Integrity\+Protection\+Mode} mode)
+\item 
+\textbf{ Integrity\+Protection\+Mode} \textbf{ integrity\+Protection\+Mode} () const
+\item 
+\textbf{ Error} \textbf{ last\+Error} () const
+\item 
+Q\+String \textbf{ encrypt\+To\+String} (const Q\+String \&plaintext)
+\item 
+Q\+String \textbf{ encrypt\+To\+String} (Q\+Byte\+Array plaintext)
+\item 
+Q\+Byte\+Array \textbf{ encrypt\+To\+Byte\+Array} (const Q\+String \&plaintext)
+\item 
+Q\+Byte\+Array \textbf{ encrypt\+To\+Byte\+Array} (Q\+Byte\+Array plaintext)
+\item 
+Q\+String \textbf{ decrypt\+To\+String} (const Q\+String \&cyphertext)
+\item 
+Q\+Byte\+Array \textbf{ decrypt\+To\+Byte\+Array} (const Q\+String \&cyphertext)
+\item 
+Q\+String \textbf{ decrypt\+To\+String} (Q\+Byte\+Array cypher)
+\item 
+Q\+Byte\+Array \textbf{ decrypt\+To\+Byte\+Array} (Q\+Byte\+Array cypher)
+\item 
+\mbox{\label{class_simple_crypt_a710fb3871372ccddd6450f73afca24eb}} 
+{\bfseries Q\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+F\+L\+A\+GS} (Crypto\+Flags, Crypto\+Flag)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple encryption and decryption of strings and byte arrays. 
+
+This class provides a simple implementation of encryption and decryption of strings and byte arrays.
+
+\begin{DoxyWarning}{Warning}
+The encryption provided by this class is N\+OT strong encryption. It may help to shield things from curious eyes, but it will N\+OT stand up to someone determined to break the encryption. Don\textquotesingle{}t say you were not warned.
+\end{DoxyWarning}
+The class uses a 64 bit key. Simply create an instance of the class, set the key, and use the \doxyref{encrypt\+To\+String()}{p.}{class_simple_crypt_af26a3d3c6cef9732190c1d2c6a53a5b5} method to calculate an encrypted version of the input string. To decrypt that string again, use an instance of \doxyref{Simple\+Crypt}{p.}{class_simple_crypt} initialized with the same key, and call the \doxyref{decrypt\+To\+String()}{p.}{class_simple_crypt_aa454cf372b534fd5ffaa2c5bd0fa57ea} method with the encrypted string. If the key matches, the decrypted version of the string will be returned again.
+
+If you do not provide a key, or if something else is wrong, the encryption and decryption function will return an empty string or will return a string containing nonsense. \doxyref{last\+Error()}{p.}{class_simple_crypt_acb412b13386bf2bcb31552bc40949b39} will return a value indicating if the method was succesful, and if not, why not.
+
+\doxyref{Simple\+Crypt}{p.}{class_simple_crypt} is prepared for the case that the encryption and decryption algorithm is changed in a later version, by prepending a version identifier to the cypertext. 
+
+Definition at line 57 of file simplecrypt.\+h.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\label{class_simple_crypt_a25298e746f175cf175a18f082092ca8e}} 
+\index{SimpleCrypt@{SimpleCrypt}!CompressionMode@{CompressionMode}}
+\index{CompressionMode@{CompressionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{CompressionMode}
+{\footnotesize\ttfamily enum \textbf{ Simple\+Crypt\+::\+Compression\+Mode}}
+
+Compression\+Mode describes if compression will be applied to the data to be encrypted. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompressionAuto@{CompressionAuto}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!CompressionAuto@{CompressionAuto}}}\mbox{\label{class_simple_crypt_a25298e746f175cf175a18f082092ca8ea8d04b76ed73553456ec87e88b18ddc66}} 
+Compression\+Auto&Only apply compression if that results in a shorter plaintext. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompressionAlways@{CompressionAlways}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!CompressionAlways@{CompressionAlways}}}\mbox{\label{class_simple_crypt_a25298e746f175cf175a18f082092ca8ea10aec29129f4e6d08c4f61d7008ec8f7}} 
+Compression\+Always&Always apply compression. Note that for short inputs, a compression may result in longer data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CompressionNever@{CompressionNever}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!CompressionNever@{CompressionNever}}}\mbox{\label{class_simple_crypt_a25298e746f175cf175a18f082092ca8eadc794d925e3af54dcef9a24ee3f60f6d}} 
+Compression\+Never&Never apply compression. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 64 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_ab7f81049e78f021b55a36f7cfac5a09b}} 
+\index{SimpleCrypt@{SimpleCrypt}!Error@{Error}}
+\index{Error@{Error}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{Error}
+{\footnotesize\ttfamily enum \textbf{ Simple\+Crypt\+::\+Error}}
+
+Error describes the type of error that occured. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ErrorNoError@{ErrorNoError}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ErrorNoError@{ErrorNoError}}}\mbox{\label{class_simple_crypt_ab7f81049e78f021b55a36f7cfac5a09ba77b7389ae8659e97df448c8fff79ca83}} 
+Error\+No\+Error&No error occurred. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ErrorNoKeySet@{ErrorNoKeySet}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ErrorNoKeySet@{ErrorNoKeySet}}}\mbox{\label{class_simple_crypt_ab7f81049e78f021b55a36f7cfac5a09bacfb6271ef5415fe5e6a0e5ee3094f3a7}} 
+Error\+No\+Key\+Set&No key was set. You can not encrypt or decrypt without a valid key. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ErrorUnknownVersion@{ErrorUnknownVersion}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ErrorUnknownVersion@{ErrorUnknownVersion}}}\mbox{\label{class_simple_crypt_ab7f81049e78f021b55a36f7cfac5a09ba4c43644f04a0eefc3ed2205223f19479}} 
+Error\+Unknown\+Version&The version of this data is unknown, or the data is otherwise not valid. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ErrorIntegrityFailed@{ErrorIntegrityFailed}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ErrorIntegrityFailed@{ErrorIntegrityFailed}}}\mbox{\label{class_simple_crypt_ab7f81049e78f021b55a36f7cfac5a09ba8566157b59e4662d0400b34249918e88}} 
+Error\+Integrity\+Failed&The integrity check of the data failed. Perhaps the wrong key was used. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 87 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_a42a5172e558d346b28421cc4e85feb2d}} 
+\index{SimpleCrypt@{SimpleCrypt}!IntegrityProtectionMode@{IntegrityProtectionMode}}
+\index{IntegrityProtectionMode@{IntegrityProtectionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{IntegrityProtectionMode}
+{\footnotesize\ttfamily enum \textbf{ Simple\+Crypt\+::\+Integrity\+Protection\+Mode}}
+
+Integrity\+Protection\+Mode describes measures taken to make it possible to detect problems with the data or wrong decryption keys.
+
+Measures involve adding a checksum or a cryptograhpic hash to the data to be encrypted. This increases the length of the resulting cypertext, but makes it possible to check if the plaintext appears to be valid after decryption. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ProtectionNone@{ProtectionNone}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ProtectionNone@{ProtectionNone}}}\mbox{\label{class_simple_crypt_a42a5172e558d346b28421cc4e85feb2da75547c41ccde1fb3d4db9f8c27164e4c}} 
+Protection\+None&The integerity of the encrypted data is not protected. It is not really possible to detect a wrong key, for instance. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ProtectionChecksum@{ProtectionChecksum}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ProtectionChecksum@{ProtectionChecksum}}}\mbox{\label{class_simple_crypt_a42a5172e558d346b28421cc4e85feb2dab6ccee9e9680f70c79213647c7814e5c}} 
+Protection\+Checksum&A simple checksum is used to verify that the data is in order. If not, an empty string is returned. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ProtectionHash@{ProtectionHash}!SimpleCrypt@{SimpleCrypt}}\index{SimpleCrypt@{SimpleCrypt}!ProtectionHash@{ProtectionHash}}}\mbox{\label{class_simple_crypt_a42a5172e558d346b28421cc4e85feb2daf915c42837795744edbc5254eb93154f}} 
+Protection\+Hash&A cryptographic hash is used to verify the integrity of the data. This method produces a much stronger, but longer check \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 78 of file simplecrypt.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{class_simple_crypt_ac474d12cfa9f93bfecea35891831046d}} 
+\index{SimpleCrypt@{SimpleCrypt}!SimpleCrypt@{SimpleCrypt}}
+\index{SimpleCrypt@{SimpleCrypt}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{SimpleCrypt()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Simple\+Crypt\+::\+Simple\+Crypt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor.
+
+Constructs a \doxyref{Simple\+Crypt}{p.}{class_simple_crypt} instance without a valid key set on it. 
+
+Definition at line 35 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_a65942757b85b3dd36618ea3edc5ceb89}} 
+\index{SimpleCrypt@{SimpleCrypt}!SimpleCrypt@{SimpleCrypt}}
+\index{SimpleCrypt@{SimpleCrypt}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{SimpleCrypt()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Simple\+Crypt\+::\+Simple\+Crypt (\begin{DoxyParamCaption}\item[{quint64}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor.
+
+Constructs a \doxyref{Simple\+Crypt}{p.}{class_simple_crypt} instance and initializes it with the given \begin{DoxyItemize}
+\item key. \end{DoxyItemize}
+
+
+Definition at line 43 of file simplecrypt.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{class_simple_crypt_ac0a68b3ef5441aaf7724f11376e036bd}} 
+\index{SimpleCrypt@{SimpleCrypt}!compressionMode@{compressionMode}}
+\index{compressionMode@{compressionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{compressionMode()}
+{\footnotesize\ttfamily \textbf{ Compression\+Mode} Simple\+Crypt\+::compression\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the Compression\+Mode that is currently in use. 
+
+Definition at line 127 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_ad6785e087d449a1aa80c39248e98fcda}} 
+\index{SimpleCrypt@{SimpleCrypt}!decryptToByteArray@{decryptToByteArray}}
+\index{decryptToByteArray@{decryptToByteArray}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{decryptToByteArray()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Byte\+Array Simple\+Crypt\+::decrypt\+To\+Byte\+Array (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{cyphertext }\end{DoxyParamCaption})}
+
+Decrypts a cyphertext string encrypted with this class with the set key back to the plain text version.
+
+If an error occured, such as non-\/matching keys between encryption and decryption, an empty string or a string containing nonsense may be returned. 
+
+Definition at line 178 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_a4babb69e45849f672574a26b6433c85a}} 
+\index{SimpleCrypt@{SimpleCrypt}!decryptToByteArray@{decryptToByteArray}}
+\index{decryptToByteArray@{decryptToByteArray}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{decryptToByteArray()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Byte\+Array Simple\+Crypt\+::decrypt\+To\+Byte\+Array (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{cypher }\end{DoxyParamCaption})}
+
+Decrypts a cyphertext binary encrypted with this class with the set key back to the plain text version.
+
+If an error occured, such as non-\/matching keys between encryption and decryption, an empty string or a string containing nonsense may be returned. 
+
+Definition at line 186 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_aa454cf372b534fd5ffaa2c5bd0fa57ea}} 
+\index{SimpleCrypt@{SimpleCrypt}!decryptToString@{decryptToString}}
+\index{decryptToString@{decryptToString}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{decryptToString()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+String Simple\+Crypt\+::decrypt\+To\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{cyphertext }\end{DoxyParamCaption})}
+
+Decrypts a cyphertext string encrypted with this class with the set key back to the plain text version.
+
+If an error occured, such as non-\/matching keys between encryption and decryption, an empty string or a string containing nonsense may be returned. 
+
+Definition at line 161 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_ad1a3257cefee43773803ec1b12654f92}} 
+\index{SimpleCrypt@{SimpleCrypt}!decryptToString@{decryptToString}}
+\index{decryptToString@{decryptToString}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{decryptToString()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+String Simple\+Crypt\+::decrypt\+To\+String (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{cypher }\end{DoxyParamCaption})}
+
+Decrypts a cyphertext binary encrypted with this class with the set key back to the plain text version.
+
+If an error occured, such as non-\/matching keys between encryption and decryption, an empty string or a string containing nonsense may be returned. 
+
+Definition at line 170 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_ae1991c7748b2bb74468bee0be372d2c4}} 
+\index{SimpleCrypt@{SimpleCrypt}!encryptToByteArray@{encryptToByteArray}}
+\index{encryptToByteArray@{encryptToByteArray}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{encryptToByteArray()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Byte\+Array Simple\+Crypt\+::encrypt\+To\+Byte\+Array (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{plaintext }\end{DoxyParamCaption})}
+
+Encrypts the \begin{DoxyItemize}
+\item plaintext string with the key the class was initialized with, and returns a binary cyphertext in a Q\+Byte\+Array the result.\end{DoxyItemize}
+This method returns a byte array, that is useable for storing a binary format. If you need a string you can store in a text file, use \doxyref{encrypt\+To\+String()}{p.}{class_simple_crypt_af26a3d3c6cef9732190c1d2c6a53a5b5} instead. 
+
+Definition at line 72 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_a741305d04e86bcb7d4625b05bf234887}} 
+\index{SimpleCrypt@{SimpleCrypt}!encryptToByteArray@{encryptToByteArray}}
+\index{encryptToByteArray@{encryptToByteArray}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{encryptToByteArray()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Byte\+Array Simple\+Crypt\+::encrypt\+To\+Byte\+Array (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{plaintext }\end{DoxyParamCaption})}
+
+Encrypts the \begin{DoxyItemize}
+\item plaintext Q\+Byte\+Array with the key the class was initialized with, and returns a binary cyphertext in a Q\+Byte\+Array the result.\end{DoxyItemize}
+This method returns a byte array, that is useable for storing a binary format. If you need a string you can store in a text file, use \doxyref{encrypt\+To\+String()}{p.}{class_simple_crypt_af26a3d3c6cef9732190c1d2c6a53a5b5} instead. 
+
+Definition at line 78 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_af26a3d3c6cef9732190c1d2c6a53a5b5}} 
+\index{SimpleCrypt@{SimpleCrypt}!encryptToString@{encryptToString}}
+\index{encryptToString@{encryptToString}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{encryptToString()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+String Simple\+Crypt\+::encrypt\+To\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{plaintext }\end{DoxyParamCaption})}
+
+Encrypts the \begin{DoxyItemize}
+\item plaintext string with the key the class was initialized with, and returns a cyphertext the result. The result is a base64 encoded version of the binary array that is the actual result of the string, so it can be stored easily in a text format. \end{DoxyItemize}
+
+
+Definition at line 146 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_aa72b79bf7a5bb971bf3b0a52b9247efd}} 
+\index{SimpleCrypt@{SimpleCrypt}!encryptToString@{encryptToString}}
+\index{encryptToString@{encryptToString}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{encryptToString()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+String Simple\+Crypt\+::encrypt\+To\+String (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{plaintext }\end{DoxyParamCaption})}
+
+Encrypts the \begin{DoxyItemize}
+\item plaintext Q\+Byte\+Array with the key the class was initialized with, and returns a cyphertext the result. The result is a base64 encoded version of the binary array that is the actual result of the encryption, so it can be stored easily in a text format. \end{DoxyItemize}
+
+
+Definition at line 154 of file simplecrypt.\+cpp.
+
+\mbox{\label{class_simple_crypt_ad800808bcffc9a09225c651200b3ef5c}} 
+\index{SimpleCrypt@{SimpleCrypt}!hasKey@{hasKey}}
+\index{hasKey@{hasKey}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{hasKey()}
+{\footnotesize\ttfamily bool Simple\+Crypt\+::has\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns true if \doxyref{Simple\+Crypt}{p.}{class_simple_crypt} has been initialized with a key. 
+
+Definition at line 115 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_ac8940489ec63b0022335d9d6ab3b11a1}} 
+\index{SimpleCrypt@{SimpleCrypt}!integrityProtectionMode@{integrityProtectionMode}}
+\index{integrityProtectionMode@{integrityProtectionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{integrityProtectionMode()}
+{\footnotesize\ttfamily \textbf{ Integrity\+Protection\+Mode} Simple\+Crypt\+::integrity\+Protection\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the Integrity\+Protection\+Mode that is currently in use. 
+
+Definition at line 139 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_acb412b13386bf2bcb31552bc40949b39}} 
+\index{SimpleCrypt@{SimpleCrypt}!lastError@{lastError}}
+\index{lastError@{lastError}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{lastError()}
+{\footnotesize\ttfamily \textbf{ Error} Simple\+Crypt\+::last\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the last error that occurred. 
+
+Definition at line 144 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_adc6c6355aa276c0d3516f7ad273f063b}} 
+\index{SimpleCrypt@{SimpleCrypt}!setCompressionMode@{setCompressionMode}}
+\index{setCompressionMode@{setCompressionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{setCompressionMode()}
+{\footnotesize\ttfamily void Simple\+Crypt\+::set\+Compression\+Mode (\begin{DoxyParamCaption}\item[{\textbf{ Compression\+Mode}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the compression mode to use when encrypting data. The default mode is Auto.
+
+Note that decryption is not influenced by this mode, as the decryption recognizes what mode was used when encrypting. 
+
+Definition at line 123 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_a4fef5e6d3246ee57d6a7b68475b12b8b}} 
+\index{SimpleCrypt@{SimpleCrypt}!setIntegrityProtectionMode@{setIntegrityProtectionMode}}
+\index{setIntegrityProtectionMode@{setIntegrityProtectionMode}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{setIntegrityProtectionMode()}
+{\footnotesize\ttfamily void Simple\+Crypt\+::set\+Integrity\+Protection\+Mode (\begin{DoxyParamCaption}\item[{\textbf{ Integrity\+Protection\+Mode}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the integrity mode to use when encrypting data. The default mode is Checksum.
+
+Note that decryption is not influenced by this mode, as the decryption recognizes what mode was used when encrypting. 
+
+Definition at line 135 of file simplecrypt.\+h.
+
+\mbox{\label{class_simple_crypt_aa7aad9ed2e88b883ba9214c7d9928745}} 
+\index{SimpleCrypt@{SimpleCrypt}!setKey@{setKey}}
+\index{setKey@{setKey}!SimpleCrypt@{SimpleCrypt}}
+\doxysubsubsection{setKey()}
+{\footnotesize\ttfamily void Simple\+Crypt\+::set\+Key (\begin{DoxyParamCaption}\item[{quint64}]{key }\end{DoxyParamCaption})}
+
+(Re-\/) initializes the key with the given \begin{DoxyItemize}
+\item key. \end{DoxyItemize}
+
+
+Definition at line 52 of file simplecrypt.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+simplecrypt.\+h\item 
+simplecrypt.\+cpp\end{DoxyCompactItemize}
