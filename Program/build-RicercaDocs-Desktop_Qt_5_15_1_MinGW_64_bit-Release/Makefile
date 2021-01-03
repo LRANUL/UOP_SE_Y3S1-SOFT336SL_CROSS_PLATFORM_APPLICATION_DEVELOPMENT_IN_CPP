@@ -248,6 +248,7 @@ Makefile: ../RicercaDocs/RicercaDocs.pro C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_config.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/toolchain.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/default_pre.prf \
@@ -278,7 +279,6 @@ Makefile: ../RicercaDocs/RicercaDocs.pro C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/qtmain.prl \
-		.qmake.stash \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/build_pass.prf \
 		../RicercaDocs/assets.qrc
 	$(QMAKE) -o Makefile ..\RicercaDocs\RicercaDocs.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
@@ -460,6 +460,7 @@ C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_functions.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_config.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/toolchain.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/default_pre.prf:
@@ -490,7 +491,6 @@ C:/Qt/5.15.1/mingw81_64/lib/Qt5Widgets.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Core.prl:
 C:/Qt/5.15.1/mingw81_64/lib/qtmain.prl:
-.qmake.stash:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/build_pass.prf:
 ../RicercaDocs/assets.qrc:
 qmake: FORCE

@@ -95,6 +95,11 @@ void MainWindow::on_actionAbout_triggered()
 }
 
 // Opens a new window, creates a new note-taking window, creates a new object of the main window
+void MainWindow::on_newFile_clicked()
+{
+    MainWindow *newEditor = new MainWindow();
+    newEditor->show();
+}
 void MainWindow::on_actionNew_triggered()
 {
     on_newFile_clicked();
